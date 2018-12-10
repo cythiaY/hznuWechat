@@ -1,4 +1,6 @@
 <!--index.wxml-->
 <view class="index-container">
-  
+  <view class="search">
+    <image class="search-icon" src="../../assets/search.png"></image>
+  </view>
 </view>
