@@ -1,6 +1,21 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="index-container">
   <view class="search">
     <image class="search-icon" src="../../assets/search.png"></image>
   </view>
+  <view class="filters">
+    <block wx:for="{{filters}}" wx:key="index">
+      <view class="filter-item {{item.value === activeFilter?'active':''}}">{{item.label}}</view>
+    </block>
+  </view>
+  <block wx:for="{{listData}}" wx:key="index">
+    <view class="list-item">
+      <image class="head-img" src="{{item.imgUrl}}"></image>
+      <view class="nickname">{{item.nickname}}</view>
+      <view class="list-content">{{item.content}}</view>
+      <view class="content-imgs">
+        <image wx:for="{{item.uploadImgs}}" class="upload-image" src="{{item}}"></image>
+      </view>
+    </view>
+  </block>
 </view>

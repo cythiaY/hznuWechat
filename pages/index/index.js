@@ -4,51 +4,48 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+    filters: [{
+        value: 0,
+        label: '推荐'
+      }, {
+        value: 1,
+        label: '二手'
+      }, {
+        value: 2,
+        label: '表白'
+      }, {
+        value: 3,
+        label: '组队'
+      },
+      {
+        value: 4,
+        label: '帖子'
+      }, {
+        value: 5,
+        label: '考研'
+      }, {
+        value: 6,
+        label: '帮帮'
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    ],
+    activeFilter: 0,
+    listData: [{
+      imgUrl: 'https://tva1.sinaimg.cn/crop.4.0.632.632.180/006AiaaWjw8f89kzrgkkyj30hs0hk3zv.jpg',
+      nickname: 'white',
+      content: '“双十一后要吃土的童鞋注意一下，老区的土质较差口感不好，畅志园的土比黏容易粘牙。新区食品院附近树下的土带有一点甜味,但嚼劲太大',
+      uploadImgs: ['https://wx4.sinaimg.cn/orj360/006AiaaWly1fy37z8vourj31120ku40g.jpg', 'https://wx4.sinaimg.cn/crop.0.32.790.439/7077dc1dly1fy1wga4c2yj20ly0lyarj.jpg']
+    }, {
+      imgUrl: 'https://tvax3.sinaimg.cn/crop.0.0.1080.1080.180/006UeIMUly8fxa8ik2tpgj30u00u0q6h.jpg',
+      nickname: '白开水',
+      content: '“双十一后要吃土的童鞋注意一下，老区的土质较差口感不好，畅志园的土比黏容易粘牙。新区食品院附近树下的土带有一点甜味,但嚼劲太大'
+    }, {
+      imgUrl: 'https://tvax1.sinaimg.cn/crop.0.0.996.996.180/006ajZGLly8fwwygg0ok4j30ro0rowgb.jpg',
+      nickname: '多涂防晒',
+      content: '“双十一后要吃土的童鞋注意一下，老区的土质较差口感不好，畅志园的土比黏容易粘牙。新区食品院附近树下的土带有一点甜味,但嚼劲太大'
+    }]
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+
+  onLoad: function () {
+
   }
 })
