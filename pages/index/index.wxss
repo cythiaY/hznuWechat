@@ -112,7 +112,6 @@
     position: relative;
     top: -14rpx;
     left: 8rpx;
-    /* color: #fa5167; */
     color: #787878;
     font-weight: 600;
 }

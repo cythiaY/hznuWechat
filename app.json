@@ -1,31 +1,33 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/activity/activity"
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "WeChat",
-        "navigationBarTextStyle": "black"
-    },
-    "tabBar": {
-        "color": "#737373",
-        "selectedColor": "#fa5176",
-        "backgroundColor": "#ffffff",
-        "borderStyle": "#737373",
-        "list": [{
-                "pagePath": "pages/index/index",
-                "text": "校友圈",
-                "iconPath":"assets/images/index.png",
-                "selectedIconPath":"assets/images/activeIndex.png"
-            },
-            {
-                "pagePath": "pages/activity/activity",
-                "text": "活动",
-                "iconPath":"assets/images/act.png",
-                "selectedIconPath":"assets/images/activeAct.png"
-            }
-        ]
-    }
+  "pages": [
+    "pages/index/index",
+    "pages/activity/activity",
+    "pages/content/content"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#737373",
+    "selectedColor": "#fa5176",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "#737373",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "校友圈",
+        "iconPath": "assets/images/index.png",
+        "selectedIconPath": "assets/images/activeIndex.png"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "活动",
+        "iconPath": "assets/images/act.png",
+        "selectedIconPath": "assets/images/activeAct.png"
+      }
+    ]
+  }
 }

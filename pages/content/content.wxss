@@ -1,0 +1,191 @@
+/* pages/content/content.wxss */
+.content-detail {
+    padding: 32rpx;
+    padding-bottom: 110rpx;
+}
+
+.content-detail .head {
+    overflow: hidden;
+    margin-bottom: 30rpx;
+}
+
+.head .head-img {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 70rpx;
+    margin-right: 20rpx;
+    float: left;
+}
+
+.head .user-name {
+    font-size: 32rpx;
+    color: #3a3a3a;
+    line-height: 70rpx;
+    float: left;
+}
+
+.head .post-time {
+    float: right;
+    font-size: 28rpx;
+    line-height: 70rpx;
+    color: #b9b9b9;
+}
+
+.content-detail .context {
+    font-size: 30rpx;
+    color: #5c5c5c;
+    line-height: 2;
+    text-indent: 30rpx;
+}
+
+.content-detail .talk-imgs {
+    margin-top: 20rpx;
+}
+
+.content-detail .talk-imgs .image-item {
+    width: 210rpx;
+    height: 210rpx;
+    display: inline-block;
+    margin: 10rpx 8rpx;
+}
+
+.content-detail .options {
+    margin-top: 20rpx;
+}
+
+.content-detail .options {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20rpx;
+}
+
+.content-detail .option-icon {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.content-detail .comment-icon::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4rpx;
+    border-radius: 4rpx;
+    background: #fa5167;
+}
+
+.content-detail .option-num {
+    font-size: 20rpx;
+    position: relative;
+    top: -14rpx;
+    left: 8rpx;
+    color: #fa5167;
+    font-weight: 600;
+}
+
+.comments .comment-item {
+    margin-top: 30rpx;
+}
+
+.comments .owner-comment-head {
+    overflow: hidden;
+}
+
+.comments .owner-comment {
+    margin: 20rpx 0;
+}
+
+.owner-comment-head .head-img {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50rpx;
+    margin-right: 20rpx;
+    float: left;
+}
+
+.owner-comment-head .user-name {
+    font-size: 32rpx;
+    color: #3a3a3a;
+    line-height: 50rpx;
+    float: left;
+    margin-right: 40rpx;
+}
+
+.owner-comment-head .post-time {
+    float: left;
+    font-size: 28rpx;
+    line-height: 50rpx;
+    color: #b9b9b9;
+}
+
+.owner-comment .owner-context {
+    color: #919191;
+    line-height: 2;
+    font-size: 28rpx;
+    text-indent: 10rpx;
+    margin: 16rpx 0;
+}
+
+.comment-replies {
+    background: #fbfbfb;
+    padding: 8rpx 16rpx;
+    border-radius: 16rpx;
+    font-size: 26rpx;
+}
+
+.reply-item .commenter {
+    color: #fa5167;
+    margin-right: 16rpx;
+}
+
+.reply-item .content {
+    color: #6b6b6b;
+
+}
+
+.comment-replies .more-replies {
+    color: #44a5c9;
+    margin-top: 20rpx;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+    padding: 20rpx 16rpx 4rpx 16rpx;
+    width: 100%;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+.bottom .comment-write {
+    background: #ebebeb;
+    height: 60rpx;
+    border-radius: 8rpx;
+}
+
+.bottom .write-img {
+    width: 24rpx;
+    height: 28rpx;
+    float: left;
+    margin: 16rpx;
+}
+
+.bottom .comment-input {
+    font-size: 26rpx;
+    float: left;
+    width: 80%;
+    line-height: 60rpx;
+    min-height: 60rpx;
+}
+
+.bottom .confirm-img {
+    float: right;
+    width: 24rpx;
+    height: 28rpx;
+    margin: 16rpx;
+}
+
+.bottom .input-placeholder {
+    line-height: 60rpx;
+    color: #808080;
+    text-indent: 20rpx;
+}
