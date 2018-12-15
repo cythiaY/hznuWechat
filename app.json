@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/activity/activity",
-    "pages/content/content"
+    "pages/content/content",
+    "pages/post/post"
   ],
   "window": {
     "backgroundTextStyle": "light",

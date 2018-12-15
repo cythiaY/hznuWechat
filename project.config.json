@@ -37,12 +37,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "内容详情",
-					"pathName": "pages/content/content"
+					"pathName": "pages/content/content",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发表内容",
+					"pathName": "pages/post/post"
 				}
 			]
 		}

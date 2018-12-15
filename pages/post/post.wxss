@@ -1,0 +1,59 @@
+/* pages/post/post.wxss */
+.tags {
+    margin: 0 5%;
+}
+
+.tags .tag-item {
+    padding: 8rpx 16rpx;
+    border-radius: 10rpx;
+    border: 2rpx solid #fa5167;
+    color: #fa5167;
+    font-size: 26rpx;
+    width: fit-content;
+    display: inline-block;
+    margin: 16rpx;
+}
+
+.tags .active {
+    background: #fa5167;
+    color: #ffffff;
+}
+
+.context {
+    width: 80%;
+    margin: 5% 5%;
+    padding: 5% 5%;
+    font-size: 30rpx;
+    background: #fbfbfb;
+    color: #404040;
+    line-height: 1.5;
+}
+
+.upload-imgs {
+    padding: 32rpx;
+}
+
+.upload-imgs .image-item,
+.upload-imgs .upload-icon {
+    width: 210rpx;
+    height: 210rpx;
+    display: inline-block;
+    margin: 10rpx 8rpx;
+}
+
+.upload-imgs .upload-icon {
+    padding: 50rpx;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    position: fixed;
+    bottom: 0;
+    border-radius: 8rpx;
+    width: 100%;
+    padding: 16rpx 0;
+    text-align: center;
+    font-size: 34rpx;
+    background: #fa5167;
+    color: #ffffff;
+}
