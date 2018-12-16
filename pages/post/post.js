@@ -32,7 +32,8 @@ Page({
         activeIndex: null,
         submitData: {
             imgs: ['https://wx4.sinaimg.cn/orj360/006AiaaWly1fy37z8vourj31120ku40g.jpg', 'https://wx4.sinaimg.cn/crop.0.32.790.439/7077dc1dly1fy1wga4c2yj20ly0lyarj.jpg', "https://ww1.sinaimg.cn/bmiddle/61e7f4aaly1fy79fzf64gj20hi0f4aaz.jpg"],
-        }
+        },
+        hasToken: false
     },
     chooseTag(e) {
         this.setData({
@@ -43,7 +44,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        // if(wx.getStorageSync('token')){
+        this.setData({
+            hasToken: Boolean(getApp().globalData.token)
+        })
+        // }
     },
 
     /**

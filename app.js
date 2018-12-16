@@ -6,7 +6,7 @@ App({
         //     title: '加载中',
         // })
         this.globalData.token = wx.getStorageSync('token') || ''
-        this.initApp()
+        // this.initApp()
     },
     /**
      * 
