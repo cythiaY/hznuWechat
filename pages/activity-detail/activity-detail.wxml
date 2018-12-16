@@ -1,0 +1,49 @@
+<!-- pages/activity-detail/activity-detail.wxml -->
+<view class="act-desc">
+    <image class="bg-img" src="../../assets/images/bg_01.png" mode="widthFix"></image>
+    <view wx:if="{{status === 0}}" class="sign-up">
+        <view class="sign-btn" bindtap="openForm">免费领取</view>
+    </view>
+    <view wx:elif="{{status === 1}}" class="progress">
+        <view class="text">
+            已有
+            <span style="color:#f24c00;font-weight:500">{{num}}</span>
+            人助力，快去拉好友助力，免费拿苹果!
+        </view>
+        <view style="overflow:hidden">
+            <progress class="progress-slide" percent="{{precentNum}}" stroke-width="6" border-radius="6" activeColor="#f24c00" backgroundColor="#ffffff" />
+            <view class="progress-value">{{num}} / 60</view>
+        </view>
+        <button class="share-btn" plain size="mini" open-type="share">邀请校友</button>
+    </view>
+    <view wx:if="{{status === 2}}" class="full-progress">
+        <view class="text">你已获得活动奖品，快去把活动分享给校友吧!</view>
+        <button class="share-btn" plain size="mini" open-type="share">分享给校友</button>
+    </view>
+    <view wx:if="{{showForm}}" class="sign-form-bg">
+        <view class="sign-form">
+            <view class="form-item">
+                <view class="label">您的手机号</view>
+                <input type="text" class="item-input" placeholder="填写您的手机号" />
+            </view>
+            <view class="form-item">
+                <view class="label">收果人昵称</view>
+                <input type="text" class="item-input" placeholder="填写收件人昵称(必填)" />
+            </view>
+            <view class="form-item">
+                <view class="label">收果人手机</view>
+                <input type="text" class="item-input" placeholder="填写收件人手机号(必填)" />
+            </view>
+            <view class="form-item">
+                <view class="label">收果人地址</view>
+                <input type="text" class="item-input" placeholder="填写收件人地址(必填)" />
+            </view>
+            <view class="form-item">
+                <view class="label">祝福语</view>
+                <input type="text" class="item-input" placeholder="写点什么送给TA～(选填)" />
+            </view>
+            <view class="form-btn">提交</view>
+        </view>
+        <image class="close-form" src="../../assets/images/close.png" bindtap="closeFrom"></image>
+    </view>
+</view>

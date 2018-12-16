@@ -1,0 +1,137 @@
+/* pages/activity-detail/activity-detail.wxss */
+.act-desc .bg-img {
+    width: 100%;
+    min-height: 100vh;
+    top: -112rpx;
+    position: relative;
+}
+
+.sign-btn {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f24c00;
+    padding: 8rpx 40rpx;
+    border-radius: 50rpx;
+    font-size: 34rpx;
+    color: #ffffff;
+    width: fit-content;
+}
+
+.sign-form {
+    position: absolute;
+    top: 20%;
+    width: 70%;
+    margin-left: 10%;
+    background: #ffffff;
+    border-radius: 30rpx;
+    font-size: 30rpx;
+    padding: 5%;
+}
+
+.sign-form-bg {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.form-item {
+    overflow: hidden;
+    line-height: 40rpx;
+    margin-bottom: 40rpx;
+}
+
+.form-item .label {
+    float: left;
+    width: 180rpx;
+    color: #3a3a3a;
+    line-height: 1.4rem;
+}
+
+.form-btn {
+    width: fit-content;
+    padding: 8rpx 20rpx;
+    border: 4rpx solid #f24c00;
+    background: transparent;
+    color: #f24c00;
+    border-radius: 40rpx;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-item .item-input {
+    float: left;
+    min-width: 320rpx;
+}
+
+.close-form {
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+    top: 74%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.progress {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.progress .text {
+    color: #ffffff;
+    font-size: 34rpx;
+    text-align: center;
+}
+
+.progress .progress-slide {
+    margin: 20rpx 10rpx 20rpx 0;
+    width: 70%;
+    float: left;
+}
+
+.progress-value {
+    float: left;
+    font-size: 26rpx;
+    color: #f24c00;
+    text-align: center;
+    line-height: 52rpx;
+}
+
+.progress .share-btn {
+    background: #f24c00;
+    border-radius: 50rpx;
+    font-size: 30rpx;
+    color: #ffffff;
+    margin-top: 20rpx;
+    margin-left: 20%;
+    border: none;
+}
+
+.full-progress {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.full-progress .text {
+    color: #ffffff;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.full-progress .share-btn {
+    background: #f24c00;
+    border-radius: 50rpx;
+    font-size: 30rpx;
+    color: #ffffff;
+    margin-top: 20rpx;
+    margin-left: 20%;
+    border: none;
+}

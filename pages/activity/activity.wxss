@@ -1,1 +1,66 @@
 /* pages/activity/activity.wxss */
+.activities {
+    padding: 32rpx;
+}
+
+.activity-item {
+    margin-bottom: 40rpx;
+    overflow: hidden;
+}
+
+.activity-item .act-banner {
+    width: 50%;
+    height: 300rpx;
+    border-top-left-radius: 20rpx;
+    border-bottom-left-radius: 20rpx;
+    float: left;
+}
+
+.activity-item .act-desc {
+    float: left;
+    margin-left: 20rpx;
+    max-width: 45%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+
+.act-desc .act-title {
+    color: #292929;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.act-content {
+    font-size: 26rpx;
+    color: #4f4f4f;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.act-num {
+    font-size: 30rpx;
+    color: #737373;
+    margin: 20rpx 0;
+}
+
+.act-status {
+    float: right;
+    font-size: 28rpx;
+    border-radius: 24rpx;
+    background: #fa5167;
+    color: #ffffff;
+    text-align: center;
+    width: fit-content;
+    padding: 6rpx 24rpx;
+}

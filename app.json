@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/activity/activity",
     "pages/content/content",
-    "pages/post/post"
+    "pages/post/post",
+    "pages/activity-detail/activity-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,6 +23,12 @@
         "text": "校友圈",
         "iconPath": "assets/images/index.png",
         "selectedIconPath": "assets/images/activeIndex.png"
+      },
+      {
+        "pagePath": "pages/post/post",
+        "text": "",
+        "iconPath": "assets/images/upload.png",
+        "selectedIconPath": "assets/images/upload.png"
       },
       {
         "pagePath": "pages/activity/activity",
