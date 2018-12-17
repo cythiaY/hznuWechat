@@ -1,22 +1,22 @@
 <!-- pages/content/content.wxml -->
 <view class="content-detail">
     <view class="head">
-        <image class="head-img" src="{{content.imgUrl}}"></image>
-        <view class="user-name">{{content.nickname}}</view>
-        <view class="post-time">{{content.time}}</view>
+        <image class="head-img" src="{{detailInfo.imgUrl}}"></image>
+        <view class="user-name">{{detailInfo.nickname}}</view>
+        <view class="post-time">{{detailInfo.updateTime}}</view>
     </view>
-    <text class="context" selectable="{{true}}" decode>&emsp;&emsp;{{content.talkContext}}</text>
+    <text class="context" selectable="{{true}}" decode>&emsp;&emsp;{{detailInfo.talkContext}}</text>
     <view class="talk-imgs">
-        <image wx:for="{{content.talkImg}}" wx:key="index" class="image-item" src="{{item}}" data-current="{{item}}" bindtap="previewImage"></image>
+        <image wx:for="{{detailInfo.talkImg}}" wx:key="index" class="image-item" src="{{item}}" data-current="{{item}}" bindtap="previewImage"></image>
     </view>
     <view class="options">
         <view class="option-item">
             <image class="option-icon" src="../../assets/images/unlike.png"></image>
-            <span class="option-num">{{content.likeNum}}</span>
+            <span class="option-num">{{detailInfo.likeNum}}</span>
         </view>
         <view class="option-item comment-icon">
             <image class="option-icon" src="../../assets/images/comment.png"></image>
-            <span class="option-num">{{content.commentNum}}</span>
+            <span class="option-num">{{commentNum}}</span>
         </view>
         <view class="option-item">
             <image class="option-icon" src="../../assets/images/share.png"></image>
@@ -27,17 +27,17 @@
             <view class="owner-comment">
                 <view class="owner-comment-head">
                     <image class="head-img" src="{{item.imgUrl}}"></image>
-                    <view class="user-name">{{item.nickname}}</view>
-                    <view class="post-time">{{item.time}}</view>
+                    <view class="user-name">{{item.wechatNickName}}</view>
+                    <view class="post-time">{{item.createTime}}</view>
                 </view>
-                <view class="owner-context">{{item.commentContext}}</view>
+                <view class="owner-context" data-commentno="{{item.commentNo}}" data-name="{{item.wechatNickName}}"  bindlongpress="replayPress">{{item.commentContext}}</view>
             </view>
             <view class="comment-replies">
-                <view class="reply-item" wx:for="{{item.replies}}" wx:key="index">
-                    <span class="commenter">{{item.nickname}}</span>
-                    <span class="content">{{item.replyContext}}</span>
+                <view class="reply-item" wx:for="{{item.list}}" wx:key="index">
+                    <span class="commenter">{{item.wechatNickName}}</span>
+                    <span class="content">{{item.commentContext}}</span>
                 </view>
-                <view class="more-replies">共13条回复 ></view>
+                <view class="more-replies" wx:if="{{item.length > 3}}">共{{item.length}}条回复</view>
             </view>
         </view>
     </view>
@@ -45,7 +45,7 @@
 <view class="bottom">
     <view class="comment-write">
         <image class="write-img" src="../../assets/images/write.png"></image>
-        <input placeholder="写下你的评论..." maxlength="100" class="comment-input" placeholder-class="input-placeholder" auto-height></input>
-        <image bindtap="submitComment" class="confirm-img" src="../../assets/images/send.png"></image>
+        <input placeholder="{{inputPlaceholder || '写下你的评论...'}}" focus="{{replyFocus}}" bindblur="getInputValue" maxlength="100" class="comment-input" placeholder-class="input-placeholder" value="{{commentText}}" auto-height></input>
+        <image bindtap="clickSend" class="confirm-img" src="../../assets/images/send.png"></image>
     </view>
 </view>

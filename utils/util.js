@@ -1,8 +1,4 @@
-// 不同环境的 baseUrl 
-// 测试环境
-// const BASE_URL = 'http://wx-dev.souchelease.net/'
-
-//正式环境
+//服务器域名环境
 const BASE_URL = 'https://www.nwtzhuzhu.cn/'
 
 /**
@@ -16,35 +12,40 @@ const BASE_URL = 'https://www.nwtzhuzhu.cn/'
 let getTokenBeforeAjax = null;
 
 const ajax = function (obj) {
-    let { url, method, data } = obj
-    url = BASE_URL + url
+  let {
+    url,
+    method,
+    data
+  } = obj
+  url = BASE_URL + url
 
-    getTokenBeforeAjax = getTokenBeforeAjax || getApp().initApp();
-    return getTokenBeforeAjax.then(() => {
-        let header = {
-            'content-type': 'application/x-www-form-urlencoded'
+  getTokenBeforeAjax = getTokenBeforeAjax || getApp().initApp();
+  return getTokenBeforeAjax.then(() => {
+    let header = {
+      // 'content-type': 'application/x-www-form-urlencoded',
+      'sid': 'HPWobeVy6OJVzrfAcNtlB4a5gTws'
+    }
+    // data.token = getApp().globalData.token
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url,
+        data,
+        header,
+        method: method || 'POST',
+        success(res) {
+        //   console.log(res)
+          if (res.statusCode === 200) {
+            resolve(res.data)
+          } else {
+            reject(res)
+          }
+        },
+        fail(res) {
+          reject(res)
         }
-        data.token = getApp().globalData.token
-        data.teamCode = wx.getStorageSync('teamCode')
-        return new Promise((resolve, reject) => {
-            wx.request({
-                url,
-                data,
-                header,
-                method: method || 'POST',
-                success(res) {
-                    if (res.statusCode === 200 && parseInt(res.data.code) === 200) {
-                        resolve(res.data.data)
-                    } else {
-                        reject(res)
-                    }
-                },
-                fail(res) {
-                    reject(res)
-                }
-            })
-        })
-    }).catch(err => Promise.reject(err.data))
+      })
+    })
+  }).catch(err => Promise.reject(err.data))
 }
 
 /**
@@ -55,23 +56,23 @@ const ajax = function (obj) {
  * 
  */
 const extend = function () {
-    let target = arguments[0]
-    target = Object(target)
-    for (let i = 1; i < arguments.length; i++) {
-        let nextSource = arguments[i];
-        let keysArray = Object.keys(Object(nextSource));
-        for (let nextIndex = 0; nextIndex < keysArray.length; nextIndex++) {
-            let nextKey = keysArray[nextIndex];
-            if (typeof keysArray[nextIndex] === "object") {
-                target[nextKey] = extend(target[nextKey], nextSource[nextKey])
-            } else {
-                target[nextKey] = nextSource[nextKey];
-            }
-        }
+  let target = arguments[0]
+  target = Object(target)
+  for (let i = 1; i < arguments.length; i++) {
+    let nextSource = arguments[i];
+    let keysArray = Object.keys(Object(nextSource));
+    for (let nextIndex = 0; nextIndex < keysArray.length; nextIndex++) {
+      let nextKey = keysArray[nextIndex];
+      if (typeof keysArray[nextIndex] === "object") {
+        target[nextKey] = extend(target[nextKey], nextSource[nextKey])
+      } else {
+        target[nextKey] = nextSource[nextKey];
+      }
     }
-    return target
+  }
+  return target
 }
 module.exports = {
-    ajax,
-    BASE_URL
+  ajax,
+  BASE_URL
 }

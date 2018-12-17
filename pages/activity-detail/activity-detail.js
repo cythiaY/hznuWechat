@@ -1,12 +1,15 @@
 // pages/activity-detail/activity-detail.js
+const Api = require('../../utils/api.js')
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        id: '',
         showForm: false,
-        status: 2,
+        status: 0,
         num: 10,
         precentNum: parseInt(10 / 60 * 100)
     },
@@ -20,11 +23,26 @@ Page({
             showForm: false
         })
     },
+    submitForm(e) {
+        console.log(e.detail.value)
+        let postData = {
+            activityNo: this.data.id,
+            userMobile: e.detail.value.phone,
+            winner: e.detail.value.consignee,
+            winnerMobile: e.detail.value.consigneePhone,
+            winnerAddress: e.detail.value.consigneeAdd
+        }
+        Api.applyActivity(postData).then(res => {
+            console.log(res)
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            id: options.id
+        })
     },
 
     /**

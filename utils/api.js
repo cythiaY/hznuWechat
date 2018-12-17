@@ -2,105 +2,76 @@ const Util = require('./util.js')
 
 /**
  * 
- * 获取官网信息
+ * 获取校友圈列表
  * @param {*} obj 
  * 
  */
-export function getHomeInfo(obj = {}) {
+export function getTalkList(obj = {}) {
     return Util.ajax({
-        url: 'companyInfo/companyInfoAction/getCompanyInfoByTeam.json',
-        method: 'get',
-        data: obj
-    })
-}
-/**
- * 
- * 获取官网热门车型
- * @param {*} obj 
- * 
- */
-export function getSimpleCarList(obj = {}) {
-    return Util.ajax({
-        url: 'carModel/carModelAction/getSimpleModelByTeamCode.json',
-        method: 'get',
-        data: obj
-    })
-}
-/**
- * 
- * 获取全部车型
- * @param {*} obj 
- * 
- */
-export function getAllCarList(obj = {}) {
-    return Util.ajax({
-        url: 'carModel/carModelAction/getAllModelByTeamCode.json',
-        method: 'get',
-        data: obj
-    })
-}
-/**
- * 
- * 获取车型详情
- * @param {*} obj 
- * 
- */
-export function getCarDetail(obj = {}) {
-    return Util.ajax({
-        url: 'carModel/carModelAction/loadCarModelInfo.json',
-        method: 'get',
-        data: obj
-    })
-}
-/**
- * 
- * 获取拨打电话线索
- * @param {*} obj 
- * 
- */
-export function getPhoneNumber(obj = {}) {
-    return Util.ajax({
-        url: 'clue/clueAction/addPhoneClue.json',
+        url: 'light/content/list',
         method: 'post',
         data: obj
     })
 }
 /**
  * 
- * 获取预约咨询线索
- * @param {*} obj 
+ * 获取言论详情
+ * @param {*} talkNo 
  * 
  */
-export function postBookForm(obj = {}) {
+export function getTalkDetail(talkNo = '') {
     return Util.ajax({
-        url: 'clue/clueAction/addAppointmentClue.json',
-        method: 'post',
-        data: obj
+        url: `light/content/get/${talkNo}`,
+        method: 'get'
     })
 }
 /**
  * 
- * 获取车型分享信息
- * @param {*} obj 
+ * 获取言论详情
+ * @param {*} talkNo 
  * 
  */
-export function getDetailShareCode(obj = {}) {
+export function getTalkCommentDetail(talkNo = '') {
     return Util.ajax({
-        url: 'carModel/carModelAction/shareCarModel.json',
-        method: 'post',
-        data: obj
+        url: `light/content/commit/get/${talkNo}`,
+        method: 'get'
     })
 }
 /**
  * 
- * 获取官网分享信息
- * @param {*} obj 
+ * 增加评论
+ * @param {*} talkNo 
  * 
  */
-export function getHomeShareCode(obj = {}) {
+export function addTalkComment(opts = {}) {
     return Util.ajax({
-        url: 'companyInfo/companyInfoAction/shareCompany.json',
+        url: 'light/content/comment/add',
         method: 'post',
-        data: obj
+        data: opts
+    })
+}
+/**
+ * 
+ * 获取栏目
+ * @param {*} talkNo 
+ * 
+ */
+export function getTalkChannel() {
+    return Util.ajax({
+        url: 'light/channel/list',
+        method: 'get'
+    })
+}
+/**
+ * 
+ * 报名活动
+ * @param {*} talkNo 
+ * 
+ */
+export function applyActivity(opts = {}) {
+    return Util.ajax({
+        url: 'light/activity/signup',
+        method: 'post',
+        data: opts
     })
 }

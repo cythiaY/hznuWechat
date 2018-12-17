@@ -37,13 +37,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "内容详情",
 					"pathName": "pages/content/content",
-					"query": ""
+					"query": "id=60118121500003"
 				},
 				{
 					"id": -1,
@@ -60,7 +60,8 @@
 				{
 					"id": -1,
 					"name": "活动详情",
-					"pathName": "pages/activity-detail/activity-detail"
+					"pathName": "pages/activity-detail/activity-detail",
+					"query": ""
 				}
 			]
 		}

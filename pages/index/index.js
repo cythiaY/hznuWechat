@@ -1,6 +1,5 @@
 //index.js
-//获取应用实例
-const app = getApp()
+const Api = require('../../utils/api.js')
 
 Page({
     data: {
@@ -32,34 +31,44 @@ Page({
         listData: [{
             imgUrl: 'https://tva1.sinaimg.cn/crop.4.0.632.632.180/006AiaaWjw8f89kzrgkkyj30hs0hk3zv.jpg',
             nickname: 'white',
-            content: '“双十一后要吃土的童鞋注意一下，老区的土质较差口感不好，畅志园的土比黏容易粘牙。新区食品院附近树下的土带有一点甜味,但嚼劲太大',
             uploadImgs: ['https://wx4.sinaimg.cn/orj360/006AiaaWly1fy37z8vourj31120ku40g.jpg', 'https://wx4.sinaimg.cn/crop.0.32.790.439/7077dc1dly1fy1wga4c2yj20ly0lyarj.jpg'],
             likeNum: 54,
             commentNum: 10,
-            comments: [{
-                    name: 'bai',
-                    content: '童鞋注意一下'
-                },
-                {
-                    name: 'hei',
-                    content: '童鞋注意一下'
-                }
-            ]
         }, {
             imgUrl: 'https://tvax3.sinaimg.cn/crop.0.0.1080.1080.180/006UeIMUly8fxa8ik2tpgj30u00u0q6h.jpg',
             nickname: '白开水',
-            content: '“双十一后要吃土的童鞋注意一下，老区的土质较差口感不好，畅志园的土比黏容易粘牙。新区食品院附近树下的土带有一点甜味,但嚼劲太大',
             likeNum: 54,
             commentNum: 10,
             uploadImgs: ["https://ww1.sinaimg.cn/bmiddle/61e7f4aaly1fy79fzf64gj20hi0f4aaz.jpg"]
         }, {
             imgUrl: 'https://tvax1.sinaimg.cn/crop.0.0.996.996.180/006ajZGLly8fwwygg0ok4j30ro0rowgb.jpg',
             nickname: '多涂防晒',
-            content: '“双十一后要吃土的童鞋注意一下，老区的土质较差口感不好，畅志园的土比黏容易粘牙。新区食品院附近树下的土带有一点甜味,但嚼劲太大'
         }]
     },
 
     onLoad: function () {
-
+        this.getTalkList()
+        this.getChannel()
+    },
+    // 获取校友圈列表
+    getTalkList() {
+        Api.getTalkList().then(res => {
+            console.log('11', res.data)
+            this.setData({
+                listData: res.data
+            })
+        })
+    },
+    // 获取栏目
+    getChannel() {
+        Api.getTalkChannel().then(res => {
+            console.log(res)
+        })
+    },
+    // 跳转校友圈详情页面
+    goToTalkDetail(e) {
+        wx.navigateTo({
+            url: `/pages/content/content?id=${e.currentTarget.dataset.id}`
+        })
     }
 })

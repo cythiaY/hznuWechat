@@ -13,10 +13,10 @@
         </view>
     </view>
     <view class="list">
-        <view class="list-item" wx:for="{{listData}}" wx:key="index">
+        <view class="list-item" wx:for="{{listData}}" bindtap="goToTalkDetail" data-id="{{item.talkNo}}" wx:key="index">
             <image class="head-img" src="{{item.imgUrl}}"></image>
             <view class="nickname">{{item.nickname}}</view>
-            <view class="list-content">{{item.content}}</view>
+            <view class="list-content">{{item.talkContext}}</view>
             <view class="content-imgs">
                 <image wx:for="{{item.uploadImgs}}" wx:key="index" class="upload-image" src="{{item}}"></image>
             </view>
@@ -33,10 +33,10 @@
                     <image class="option-icon" src="../../assets/images/share.png"></image>
                 </view>
             </view>
-            <view class="comments" wx:if="{{item.comments.length > 0}}">
-                <view class="comment-item" wx:for="{{item.comments}}" wx:key="index">
-                    <span class="commenter">{{item.name}}</span>
-                    <span class="content">{{item.content}}</span>
+            <view class="comments" wx:if="{{item.commentList.length > 0}}">
+                <view class="comment-item" wx:for="{{item.commentList}}" wx:key="index">
+                    <span class="commenter">{{item.wechatNickName}}</span>
+                    <span class="content">{{item.commentContext}}</span>
                 </view>
             </view>
         </view>

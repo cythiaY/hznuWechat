@@ -22,27 +22,29 @@
     </view>
     <view wx:if="{{showForm}}" class="sign-form-bg">
         <view class="sign-form">
-            <view class="form-item">
-                <view class="label">您的手机号</view>
-                <input type="text" class="item-input" placeholder="填写您的手机号" />
-            </view>
-            <view class="form-item">
-                <view class="label">收果人昵称</view>
-                <input type="text" class="item-input" placeholder="填写收件人昵称(必填)" />
-            </view>
-            <view class="form-item">
-                <view class="label">收果人手机</view>
-                <input type="text" class="item-input" placeholder="填写收件人手机号(必填)" />
-            </view>
-            <view class="form-item">
-                <view class="label">收果人地址</view>
-                <input type="text" class="item-input" placeholder="填写收件人地址(必填)" />
-            </view>
-            <view class="form-item">
-                <view class="label">祝福语</view>
-                <input type="text" class="item-input" placeholder="写点什么送给TA～(选填)" />
-            </view>
-            <view class="form-btn">提交</view>
+            <form bindsubmit="submitForm">
+                <view class="form-item">
+                    <view class="label">您的手机号</view>
+                    <input type="text"  name="phone" class="item-input" placeholder="填写您的手机号" />
+                </view>
+                <view class="form-item">
+                    <view class="label">收果人昵称</view>
+                    <input type="text" name="consignee" class="item-input" placeholder="填写收件人昵称(必填)" />
+                </view>
+                <view class="form-item">
+                    <view class="label">收果人手机</view>
+                    <input type="text" name="consigneePhone" class="item-input" placeholder="填写收件人手机号(必填)" />
+                </view>
+                <view class="form-item">
+                    <view class="label">收果人地址</view>
+                    <input type="text" name="consigneeAdd" class="item-input" placeholder="填写收件人地址(必填)" />
+                </view>
+                <view class="form-item">
+                    <view class="label">祝福语</view>
+                    <input type="text" name="wishes" class="item-input" placeholder="写点什么送给TA～(选填)" />
+                </view>
+                <button class="form-btn" formType="submit" bindtap="submitForm">提交</button>
+            </form>
         </view>
         <image class="close-form" src="../../assets/images/close.png" bindtap="closeFrom"></image>
     </view>
