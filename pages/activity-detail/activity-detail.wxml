@@ -16,16 +16,21 @@
         </view>
         <button class="share-btn" plain size="mini" open-type="share">邀请校友</button>
     </view>
-    <view wx:if="{{status === 2}}" class="full-progress">
+    <view wx:elif="{{status === 2}}" class="full-progress">
         <view class="text">你已获得活动奖品，快去把活动分享给校友吧!</view>
         <button class="share-btn" plain size="mini" open-type="share">分享给校友</button>
+    </view>
+    <view wx:elif="{{status === 3}}" class="help-block">
+        <view class="text">免费拿苹果，快来助力你的小伙伴～</view>
+        <button class="help-btn" plain size="mini">帮TA助力</button>
+        <button class="apply-btn" plain size="mini" bindtap="openForm">我也来参与</button>
     </view>
     <view wx:if="{{showForm}}" class="sign-form-bg">
         <view class="sign-form">
             <form bindsubmit="submitForm">
                 <view class="form-item">
                     <view class="label">您的手机号</view>
-                    <input type="text"  name="phone" class="item-input" placeholder="填写您的手机号" />
+                    <input type="text" name="phone" class="item-input" placeholder="填写您的手机号" />
                 </view>
                 <view class="form-item">
                     <view class="label">收果人昵称</view>

@@ -9,7 +9,7 @@ Page({
     data: {
         id: '',
         showForm: false,
-        status: 0,
+        status: 3,
         num: 10,
         precentNum: parseInt(10 / 60 * 100)
     },
@@ -25,6 +25,38 @@ Page({
     },
     submitForm(e) {
         console.log(e.detail.value)
+        if (!e.detail.value.consignee) {
+            wx.showToast({
+                title: '请输入收货人姓名',
+                icon: 'none',
+                duration: 3000
+            })
+            return
+        }
+        if (!e.detail.value.consigneePhone) {
+            wx.showToast({
+                title: '请输入收货人手机号',
+                icon: 'none',
+                duration: 3000
+            })
+            return
+        }
+        if (!e.detail.value.consigneeAdd) {
+            wx.showToast({
+                title: '请先输入收货人地址',
+                icon: 'none',
+                duration: 3000
+            })
+            return
+        }
+        if (!(/^1\d{10}$/.test(e.detail.value.consigneePhone))) {
+            wx.showToast({
+                title: '请输入正确的手机号',
+                icon: 'none',
+                duration: 3000
+            })
+            return
+        }
         let postData = {
             activityNo: this.data.id,
             userMobile: e.detail.value.phone,
@@ -32,9 +64,10 @@ Page({
             winnerMobile: e.detail.value.consigneePhone,
             winnerAddress: e.detail.value.consigneeAdd
         }
-        Api.applyActivity(postData).then(res => {
-            console.log(res)
-        })
+        console.log(postData)
+        // Api.applyActivity(postData).then(res => {
+        //     console.log(res)
+        // })
     },
     /**
      * 生命周期函数--监听页面加载

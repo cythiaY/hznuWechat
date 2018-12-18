@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -58,10 +58,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "活动详情",
 					"pathName": "pages/activity-detail/activity-detail",
-					"query": ""
+					"query": "id=1111"
 				}
 			]
 		}

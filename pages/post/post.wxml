@@ -8,8 +8,8 @@
     <textarea class="context" placeholder="选择你喜欢的话题，写下你想说的吧～" cols="30" rows="10"></textarea>
     <view class="upload-imgs">
         <image wx:for="{{submitData.imgs}}" wx:key="index" class="image-item" src="{{item}}" data-current="{{item}}" bindtap="previewImage"></image>
-        <image class="upload-icon" src="../../assets/images/upload.png"></image>
+        <image class="upload-icon" bindtap="chooseLocalImg" src="../../assets/images/upload.png"></image>
     </view>
-    <view class="submit-btn" bindtap="">确定发表</view>
-    <button wx:if="{{!hasToken}}" class="submit-btn" open-type="getUserInfo" mini>确定发表</button>
+    <view wx:if="{{!hasToken}}" class="submit-btn" bindtap="">确定发表</view>
+    <button wx:else class="submit-btn" open-type="getUserInfo" mini>确定发表</button>
 </view>

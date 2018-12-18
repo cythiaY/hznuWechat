@@ -44,7 +44,7 @@
 .upload-imgs .upload-icon {
     padding: 50rpx;
     box-sizing: border-box;
-    border:2rpx dashed #fa5167;
+    border: 2rpx dashed #fa5167;
 }
 
 .submit-btn {
@@ -57,4 +57,5 @@
     font-size: 34rpx;
     background: #fa5167;
     color: #ffffff;
+    line-height: 1.5;
 }

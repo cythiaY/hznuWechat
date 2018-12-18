@@ -1,4 +1,6 @@
 // pages/post/post.js
+const Util = require('../../utils/util.js')
+
 Page({
 
     /**
@@ -45,58 +47,28 @@ Page({
      */
     onLoad: function (options) {
         // if(wx.getStorageSync('token')){
-        this.setData({
-            hasToken: Boolean(getApp().globalData.token)
-        })
+        // this.setData({
+        //     hasToken: Boolean(getApp().globalData.token)
+        // })
         // }
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
+    chooseLocalImg() {
+        wx.chooseImage({
+            success(res) {
+                const tempFilePaths = res.tempFilePaths
+                wx.uploadFile({
+                    url: Util.BASE_URL + 'light/upload/file', // 仅为示例，非真实的接口地址
+                    filePath: tempFilePaths[0],
+                    name: 'file',
+                    formData: {
+                        user: 'test'
+                    },
+                    success(res) {
+                        const data = res.data
+                        // do something
+                    }
+                })
+            }
+        })
     }
 })
