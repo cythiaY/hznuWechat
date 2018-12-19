@@ -13,6 +13,44 @@ Page({
         num: 10,
         precentNum: parseInt(10 / 60 * 100)
     },
+    onLoad: function (options) {
+        this.setData({
+            id: options.id
+        })
+        console.log(3)
+    },
+    onShow: function () {
+        console.log(1)
+        this.getUserProgress()
+    },
+    getUserProgress() {
+        Api.getUserProgress(this.data.id).then(res => {
+            switch (res.data.status) {
+                case 'NOT_INVOLVED':
+                    {
+
+                    }
+                case 'ONGOING':
+                    {
+
+                    }
+                case 'FINISHED':
+                    {
+
+                    }
+            }
+            if (res.success) {
+                this.setData({
+                    performableCount
+                })
+                wx.showToast({
+                    title: '报名成功，快分享给好友帮你助力吧～',
+                    icon: 'none',
+                    duration: 3000
+                })
+            }
+        })
+    },
     openForm() {
         this.setData({
             showForm: true
@@ -58,68 +96,34 @@ Page({
             return
         }
         let postData = {
-            activityNo: this.data.id,
+            activityNo: this.data.id || '1001',
             userMobile: e.detail.value.phone,
             winner: e.detail.value.consignee,
             winnerMobile: e.detail.value.consigneePhone,
             winnerAddress: e.detail.value.consigneeAdd
         }
-        console.log(postData)
-        // Api.applyActivity(postData).then(res => {
-        //     console.log(res)
-        // })
-    },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        this.setData({
-            id: options.id
+        Api.applyActivity(postData).then(res => {
+            if (res.success) {
+                wx.showToast({
+                    title: '报名成功，快分享给好友帮你助力吧～',
+                    icon: 'none',
+                    duration: 3000
+                })
+            } else {
+                wx.showToast({
+                    title: res.msg || 'sorry，系统异常请稍后重试',
+                    icon: 'none',
+                    duration: 3000
+                })
+            }
         })
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+        this.getUserProgress()
     },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
     /**
      * 用户点击右上角分享
      */

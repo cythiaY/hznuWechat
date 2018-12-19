@@ -21,10 +21,10 @@
                 <image wx:for="{{item.uploadImgs}}" wx:key="index" class="upload-image" src="{{item}}"></image>
             </view>
             <view class="options">
-                <view class="option-item">
+                <!-- <view class="option-item">
                     <image class="option-icon" src="../../assets/images/unlike.png"></image>
                     <span class="option-num">{{item.likeNum}}</span>
-                </view>
+                </view> -->
                 <view class="option-item">
                     <image class="option-icon" src="../../assets/images/comment.png"></image>
                     <span class="option-num">{{item.commentNum}}</span>

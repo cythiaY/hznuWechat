@@ -33,7 +33,6 @@ const ajax = function (obj) {
         header,
         method: method || 'POST',
         success(res) {
-        //   console.log(res)
           if (res.statusCode === 200) {
             resolve(res.data)
           } else {

@@ -1,4 +1,5 @@
 /* pages/post/post.wxss */
+
 .tags {
     margin: 0 5%;
 }
@@ -23,6 +24,7 @@
     width: 80%;
     margin: 5% 5%;
     padding: 5% 5%;
+    height: 50rpx;
     font-size: 30rpx;
     background: #fbfbfb;
     color: #404040;
@@ -33,8 +35,7 @@
     padding: 32rpx;
 }
 
-.upload-imgs .image-item,
-.upload-imgs .upload-icon {
+.upload-imgs .image-item, .upload-imgs .upload-icon {
     width: 210rpx;
     height: 210rpx;
     display: inline-block;

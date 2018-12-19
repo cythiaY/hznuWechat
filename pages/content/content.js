@@ -8,7 +8,7 @@ Page({
     data: {
         id: '',
         commentText: '',
-        isPravite: false,
+        isPravite: 0,
         commentNum: 0,
         replyFocus: false,
         inputPlaceholder: '',
@@ -117,12 +117,12 @@ Page({
             confirmColor: '#6b6b6b',
             success(res) {
                 if (res.confirm) {
-                    _this.data.isPravite = true
+                    _this.data.isPravite = 1
                 }
                 let postData = {
                     talkNo: _this.data.id,
                     commentContext: _this.data.commentText,
-                    hasSecret: _this.data.isPravite
+                    hasSecret: 0
                 }
                 if (_this.data.parentCommitNo) {
                     postData.parentCommitNo = _this.data.parentCommitNo

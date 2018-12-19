@@ -61,7 +61,7 @@
 					"id": 3,
 					"name": "活动详情",
 					"pathName": "pages/activity-detail/activity-detail",
-					"query": "id=1111"
+					"query": "id=1001"
 				}
 			]
 		}

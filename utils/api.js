@@ -1,5 +1,19 @@
 const Util = require('./util.js')
 
+
+/**
+ * 
+ * 获取校友圈列表
+ * @param {*} obj 
+ * 
+ */
+export function getUserInfo(obj = {}) {
+    return Util.ajax({
+        url: 'light/author/wechat/getUser',
+        method: 'post',
+        data: obj
+    })
+}
 /**
  * 
  * 获取校友圈列表
@@ -70,8 +84,15 @@ export function getTalkChannel() {
  */
 export function applyActivity(opts = {}) {
     return Util.ajax({
-        url: 'light/activity/signup',
+        url: 'light/activity/signUp',
         method: 'post',
         data: opts
+    })
+}
+
+export function getUserProgress(activityNo = '') {
+    return Util.ajax({
+        url: `light/activity/user/get?activityNo=${activityNo}`,
+        method: 'get',
     })
 }

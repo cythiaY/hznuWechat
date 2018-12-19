@@ -6,7 +6,7 @@ App({
             title: '加载中',
         })
         this.globalData.token = wx.getStorageSync('sid') || ''
-        wx.setStorageSync('sid', 'HPWobeVy6OJVzrfAcNtlB4a5gTws')
+        // wx.setStorageSync('sid', 'HPWobeVy6OJVzrfAcNtlB4a5gTws')
         this.initApp()
     },
     /**
@@ -53,7 +53,6 @@ App({
         }
         return this.ajax(obj).then(res => {
             wx.setStorageSync('sid', res)
-            console.log('token', res);
             _this.globalData.token = res
         }).catch((res) => {
             wx.showToast({
