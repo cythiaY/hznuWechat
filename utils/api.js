@@ -96,3 +96,6 @@ export function getUserProgress(activityNo = '') {
         method: 'get',
     })
 }
+// saveUserInfo(){
+//     'POST /light/author/save/userInfo'
+// }

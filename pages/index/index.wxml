@@ -6,39 +6,42 @@
         </view>
         <view class="filters">
             <block wx:for="{{filters}}" wx:key="index">
-                <view class="filter-item {{item.value === activeFilter?'active':''}}" mode="center">
-                    {{item.label}}
+                <view class="filter-item {{item.id === activeFilter?'active':''}}" mode="center" data-tag="{{item.id}}" bindtap="fliterList">
+                    {{item.channelName}}
                 </view>
             </block>
         </view>
     </view>
     <view class="list">
-        <view class="list-item" wx:for="{{listData}}" bindtap="goToTalkDetail" data-id="{{item.talkNo}}" wx:key="index">
-            <image class="head-img" src="{{item.imgUrl}}"></image>
-            <view class="nickname">{{item.nickname}}</view>
-            <view class="list-content">{{item.talkContext}}</view>
-            <view class="content-imgs">
-                <image wx:for="{{item.uploadImgs}}" wx:key="index" class="upload-image" src="{{item}}"></image>
-            </view>
-            <view class="options">
-                <!-- <view class="option-item">
+        <view wx:if="{{listData.length > 0}}">
+            <view class="list-item" wx:for="{{listData}}" bindtap="goToTalkDetail" data-id="{{item.talkNo}}" wx:key="index">
+                <image class="head-img" src="{{item.wechatAvatar}}"></image>
+                <view class="nickname">{{item.wechatNickName}}</view>
+                <view class="list-content">{{item.talkContext}}</view>
+                <view class="content-imgs">
+                    <image wx:for="{{item.imgs}}" wx:key="index" class="upload-image" src="{{item.imgUrl}}"></image>
+                </view>
+                <view class="options">
+                    <!-- <view class="option-item">
                     <image class="option-icon" src="../../assets/images/unlike.png"></image>
                     <span class="option-num">{{item.likeNum}}</span>
                 </view> -->
-                <view class="option-item">
-                    <image class="option-icon" src="../../assets/images/comment.png"></image>
-                    <span class="option-num">{{item.commentNum}}</span>
+                    <view class="option-item">
+                        <image class="option-icon" src="../../assets/images/comment.png"></image>
+                        <span class="option-num">{{item.commentCount}}</span>
+                    </view>
+                    <view class="option-item">
+                        <image class="option-icon" src="../../assets/images/share.png"></image>
+                    </view>
                 </view>
-                <view class="option-item">
-                    <image class="option-icon" src="../../assets/images/share.png"></image>
-                </view>
-            </view>
-            <view class="comments" wx:if="{{item.commentList.length > 0}}">
-                <view class="comment-item" wx:for="{{item.commentList}}" wx:key="index">
-                    <span class="commenter">{{item.wechatNickName}}</span>
-                    <span class="content">{{item.commentContext}}</span>
+                <view class="comments" wx:if="{{item.commentList.length > 0}}">
+                    <view class="comment-item" wx:for="{{item.commentList}}" wx:key="index">
+                        <span class="commenter">{{item.wechatNickName}}</span>
+                        <span class="content">{{item.commentContext}}</span>
+                    </view>
                 </view>
             </view>
         </view>
+        <view wx:else class="list-none">当前板块没有内容，快来抢沙发吧～</view>
     </view>
 </view>

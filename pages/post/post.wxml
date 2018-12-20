@@ -1,8 +1,8 @@
 <!-- pages/post/post.wxml -->
 <view class="post-page">
     <view class="tags">
-        <view class="tag-item {{activeIndex===index?'active':''}}" wx:for="{{tags}}" wx:key="index" data-index="{{index}}" bindtap="chooseTag">
-            {{item.label}}
+        <view class="tag-item {{activeIndex === item.id ? 'active' : ''}}" wx:for="{{filters}}" wx:key="{{item.id}}" data-index="{{item.id}}" bindtap="chooseTag">
+            {{item.channelName}}
         </view>
     </view>
     <textarea class="context" placeholder="选择你喜欢的话题，写下你想说的吧～" cols="3" rows="1"></textarea>

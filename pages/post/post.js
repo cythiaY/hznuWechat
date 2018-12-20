@@ -1,5 +1,6 @@
 // pages/post/post.js
 const Util = require('../../utils/util.js')
+const Api = require('../../utils/api.js')
 
 Page({
 
@@ -7,30 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        tags: [{
-                value: 0,
-                label: '推荐'
-            }, {
-                value: 1,
-                label: '二手'
-            }, {
-                value: 2,
-                label: '表白'
-            }, {
-                value: 3,
-                label: '组队'
-            },
-            {
-                value: 4,
-                label: '帖子'
-            }, {
-                value: 5,
-                label: '考研'
-            }, {
-                value: 6,
-                label: '帮帮'
-            }
-        ],
+        filters: [],
         activeIndex: null,
         submitData: {
             imgs: ['https://wx4.sinaimg.cn/orj360/006AiaaWly1fy37z8vourj31120ku40g.jpg', 'https://wx4.sinaimg.cn/crop.0.32.790.439/7077dc1dly1fy1wga4c2yj20ly0lyarj.jpg', "https://ww1.sinaimg.cn/bmiddle/61e7f4aaly1fy79fzf64gj20hi0f4aaz.jpg"],
@@ -52,6 +30,7 @@ Page({
         //     hasToken: Boolean(getApp().globalData.token)
         // })
         // }
+        this.getChannel()
     },
     /**
      * 获取用户信息
@@ -59,6 +38,15 @@ Page({
     getUserInfo(e) {
         console.log(e);
 
+    },
+    // 获取栏目
+    getChannel() {
+        Api.getTalkChannel().then(res => {
+            this.setData({
+                filters: res.data
+            })
+            console.log(res.data)
+        })
     },
     chooseLocalImg() {
         let _this = this
