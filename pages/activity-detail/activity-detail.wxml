@@ -1,6 +1,6 @@
 <!-- pages/activity-detail/activity-detail.wxml -->
 <view class="act-desc">
-    <image class="bg-img" src="../../assets/images/bg_01.png" mode="widthFix"></image>
+    <image class="bg-img" src="https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000002.png" mode="widthFix"></image>
     <view wx:if="{{status === 0}}" class="sign-up">
         <view class="sign-btn" bindtap="openForm">免费领取</view>
     </view>

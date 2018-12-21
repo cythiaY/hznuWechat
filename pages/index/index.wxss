@@ -21,6 +21,14 @@
     margin: 13rpx 34rpx;
 }
 
+.search .search-input {
+    display: inline-block;
+    width: 300rpx;
+    color: #b9b9b9;
+    font-size: 28rpx;
+    line-height:34rpx;
+}
+
 .filters {
     display: flex;
     flex-wrap: nowrap;
@@ -29,7 +37,7 @@
 }
 
 .filter-item {
-    font-size: 32rpx;
+    font-size: 28rpx;
     min-width: 80rpx;
     color: #b9b9b9;
     text-align: center;
@@ -41,7 +49,7 @@
 
 .list {
     background: #f0f0f0;
-    padding-top: 144rpx;
+    padding-top: 142rpx;
 }
 
 .list-item {
@@ -67,7 +75,7 @@
 }
 
 .list-item .list-content {
-    font-size: 24rpx;
+    font-size: 28rpx;
     color: #787878;
     line-height: 2;
     text-indent: 24rpx;
@@ -120,7 +128,7 @@
     background: #fbfbfb;
     padding: 16rpx;
     border-radius: 16rpx;
-    font-size: 20rpx;
+    font-size: 24rpx;
 }
 
 .comments .commenter {

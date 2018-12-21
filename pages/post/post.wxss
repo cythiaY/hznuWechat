@@ -24,7 +24,6 @@
     width: 80%;
     margin: 5% 5%;
     padding: 5% 5%;
-    height: 50rpx;
     font-size: 30rpx;
     background: #fbfbfb;
     color: #404040;
@@ -35,7 +34,8 @@
     padding: 32rpx;
 }
 
-.upload-imgs .image-item, .upload-imgs .upload-icon {
+.upload-imgs .image-item,
+.upload-imgs .upload-icon {
     width: 210rpx;
     height: 210rpx;
     display: inline-block;
@@ -49,8 +49,8 @@
 }
 
 .submit-btn {
-    /* position: fixed; */
-    /* bottom: 0; */
+    position: fixed;
+    bottom: 0;
     border-radius: 8rpx;
     width: 100%;
     padding: 16rpx 0;

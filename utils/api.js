@@ -122,3 +122,25 @@ export function saveUserInfo(opts = {}) {
         data: opts
     })
 }
+/**
+ * 获取活动列表
+ * @param {*}  
+ */
+export function getActivityList() {
+    return Util.ajax({
+        url: 'light/activity/list',
+        method: 'get',
+    })
+}
+
+/**
+ * 发表文章
+ * @param {*} opts 
+ */
+export function postConent(opts = {}) {
+    return Util.ajax({
+        url: 'light/content/add',
+        method: 'post',
+        data: opts
+    })
+}

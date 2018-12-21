@@ -3,7 +3,6 @@
 .act-desc .bg-img {
     width: 100%;
     min-height: 100vh;
-    top: -112rpx;
     position: relative;
 }
 

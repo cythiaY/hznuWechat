@@ -130,13 +130,14 @@ Page({
         }
         Api.applyActivity(postData).then(res => {
             if (res.success) {
+                this.setData({
+                    status: 1,
+                    showForm: false
+                })
                 wx.showToast({
                     title: '报名成功，快分享给好友帮你助力吧～',
                     icon: 'none',
                     duration: 3000
-                })
-                this.setData({
-                    status: 1
                 })
             } else {
                 wx.showToast({
@@ -157,9 +158,15 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
+        let param = ''
+        if (this.data.signUpNo) {
+            param = `activityNo=${this.data.id}&signUpNo=${this.data.signUpNo}`
+        } else {
+            param = `activityNo=${this.data.id}`
+        }
         return {
             title: '帮我助力，免费领取平安果，你也可以参加哦',
-            path: 'pages/activity-detail/activity-detail'
+            path: `pages/activity-detail/activity-detail?${param}`
         }
     }
 })

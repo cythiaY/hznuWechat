@@ -1,38 +1,37 @@
 // pages/activity/activity.js
+const Api = require('../../utils/api.js')
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        activities: [{
-                img: 'https://wx4.sinaimg.cn/orj360/006AiaaWly1fy37z8vourj31120ku40g.jpg',
-                title: '温暖平安夜，集赞领苹果',
-                content: '在这充满欢乐的节日气氛里，千份平安果免费送啦！大家不要错过哦...',
-                status: '进行中',
-                signUpNum: 56
-            },
-            {
-                img: 'https://wx4.sinaimg.cn/orj360/006AiaaWly1fy37z8vourj31120ku40g.jpg',
-                title: '温暖平安夜，集赞领苹果',
-                content: '在这充满欢乐的节日气氛里，千份平安果免费送啦！大家不要错过哦...',
-                status: '进行中',
-                signUpNum: 56
-            }
-        ]
+        activities: []
     },
-    goToActDetail() {
-        wx.navigateTo({
-            url: '/pages/activity-detail/activity-detail'
-        });
+    goToActDetail(e) {
+        console.log(e)
+        if (e.currentTarget.dataset.status === "STARTINGUP") {
+            wx.navigateTo({
+                url: `/pages/activity-detail/activity-detail?id=${e.currentTarget.dataset.actid}`
+            });
+        }
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-
+    onLoad: function () {
+        this.getActivity()
     },
-
+    // 获取活动列表
+    getActivity() {
+        Api.getActivityList().then(res => {
+            console.log(res.data)
+            this.setData({
+                activities: res.data
+            })
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

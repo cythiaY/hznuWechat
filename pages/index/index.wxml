@@ -3,6 +3,7 @@
     <view class="top">
         <view class="search">
             <image class="search-icon" src="../../assets/images/search.png"></image>
+            <input type="text" placeholder="输入搜索" class="search-input" bindconfirm="searchList" confirm-type="search" />
         </view>
         <view class="filters">
             <block wx:for="{{filters}}" wx:key="index">
@@ -14,10 +15,10 @@
     </view>
     <view class="list">
         <view wx:if="{{listData.length > 0}}">
-            <view class="list-item" wx:for="{{listData}}" bindtap="goToTalkDetail" data-id="{{item.talkNo}}" wx:key="index">
+            <view class="list-item" wx:for="{{listData}}" wx:key="index">
                 <image class="head-img" src="{{item.wechatAvatar}}"></image>
                 <view class="nickname">{{item.wechatNickName}}</view>
-                <view class="list-content">{{item.talkContext}}</view>
+                <view bindtap="goToTalkDetail" data-id="{{item.talkNo}}" class="list-content">{{item.talkContext}}</view>
                 <view class="content-imgs">
                     <image wx:for="{{item.imgs}}" wx:key="index" class="upload-image" src="{{item.imgUrl}}"></image>
                 </view>

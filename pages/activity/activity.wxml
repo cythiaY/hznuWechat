@@ -1,17 +1,18 @@
 <!-- pages/activity/activity.wxml -->
 <view wx:if="{{activities.length === 0}}" class="no-activity">sorry，暂无活动～</view>
 <view class="activities" wx:else>
-    <view class="activity-item" wx:for="{{activities}}" wx:key="{{key}}" bindtap="goToActDetail">
-        <image class="act-banner" src="{{item.img}}"></image>
+    <view wx:for="{{activities}}" class="activity-item" wx:key="{{item.activityNo}}" data-status="{{item.activityStatus}}" data-actid="{{item.activityNo}}" bindtap="goToActDetail">
+        <image class="act-banner" src="{{item.thumbnailImg}}"></image>
         <view class="act-desc">
-            <view class="act-title">{{item.title}}</view>
-            <view class="act-content">{{item.content}}</view>
+            <view class="act-title">{{item.activityName}}</view>
+            <view class="act-content">{{item.activityDesc}}</view>
             <view class="act-num">
                 已参与
                 <span style="color:#fa5167;font-weight:500">{{item.signUpNum}}</span>
                 人
             </view>
-            <view class="act-status">{{item.status}}</view>
+            <view wx:if="{{item.activityStatus === 'UNSTART'}}" class="act-status unStart">未开始</view>
+            <view wx:else class="act-status">进行中</view>
         </view>
     </view>
 </view>

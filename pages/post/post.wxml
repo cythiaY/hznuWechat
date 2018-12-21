@@ -5,12 +5,12 @@
             {{item.channelName}}
         </view>
     </view>
-    <textarea class="context" placeholder="选择你喜欢的话题，写下你想说的吧～" cols="3" rows="1"></textarea>
+    <textarea class="context" bindblur="getTextArea" value="{{textareaInput}}" placeholder="选择你喜欢的话题，写下你想说的吧～" cols="3" rows="1"></textarea>
     <view class="upload-imgs">
         <image wx:for="{{imageUrls}}" wx:key="index" class="image-item" src="{{item}}" data-current="{{item}}" bindtap="previewImage"></image>
         <image wx:if="{{imageUrls.length < 9}}" class="upload-icon" bindtap="chooseLocalImg" src="../../assets/images/upload.png"></image>
     </view>
-    <view wx:if="{{hasToken}}" class="submit-btn" bindtap="">确定发表</view>
+    <view wx:if="{{hasToken}}" class="submit-btn" bindtap="postHandler">确定发表</view>
     <button wx:else class="submit-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo" mini>
         确定发表
     </button>
