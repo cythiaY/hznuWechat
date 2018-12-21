@@ -10,9 +10,6 @@ Page({
     data: {
         filters: [],
         activeIndex: null,
-        submitData: {
-            imgs: ['https://wx4.sinaimg.cn/orj360/006AiaaWly1fy37z8vourj31120ku40g.jpg', 'https://wx4.sinaimg.cn/crop.0.32.790.439/7077dc1dly1fy1wga4c2yj20ly0lyarj.jpg', "https://ww1.sinaimg.cn/bmiddle/61e7f4aaly1fy79fzf64gj20hi0f4aaz.jpg"],
-        },
         hasToken: false,
         imageUrls: []
     },
@@ -36,8 +33,13 @@ Page({
      * 获取用户信息
      */
     getUserInfo(e) {
-        console.log(e);
-
+        let data = {
+            wechatNickName: e.detail.userInfo.nickName,
+            wechatAvatar: e.detail.userInfo.avatarUrl
+        }
+        Api.saveUserInfo(data).then(res => {
+            console.log(res);
+        })
     },
     // 获取栏目
     getChannel() {
@@ -45,7 +47,6 @@ Page({
             this.setData({
                 filters: res.data
             })
-            console.log(res.data)
         })
     },
     chooseLocalImg() {

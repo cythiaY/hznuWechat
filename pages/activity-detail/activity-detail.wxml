@@ -7,12 +7,12 @@
     <view wx:elif="{{status === 1}}" class="progress">
         <view class="text">
             已有
-            <span style="color:#f24c00;font-weight:500">{{num}}</span>
+            <span style="color:#f24c00;font-weight:500">{{finishedCount}}</span>
             人助力，快去拉好友助力，免费拿苹果!
         </view>
         <view style="overflow:hidden">
             <progress class="progress-slide" percent="{{precentNum}}" stroke-width="6" border-radius="6" activeColor="#f24c00" backgroundColor="#ffffff" />
-            <view class="progress-value">{{num}} / 60</view>
+            <view class="progress-value">{{finishedCount}} / {{performableCount}}</view>
         </view>
         <button class="share-btn" plain size="mini" open-type="share">邀请校友</button>
     </view>
@@ -21,7 +21,7 @@
         <button class="share-btn" plain size="mini" open-type="share">分享给校友</button>
     </view>
     <view wx:elif="{{status === 3}}" class="help-block">
-        <view class="text">免费拿苹果，快来助力你的小伙伴～</view>
+        <view class="text">免费拿苹果，快来助力你的小伙伴～\n TA的进度{{finishedCount}} / {{performableCount}}</view>
         <button class="help-btn" plain size="mini">帮TA助力</button>
         <button class="apply-btn" plain size="mini" bindtap="openForm">我也来参与</button>
     </view>

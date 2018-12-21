@@ -1,4 +1,5 @@
 /* pages/activity-detail/activity-detail.wxss */
+
 .act-desc .bg-img {
     width: 100%;
     min-height: 100vh;
@@ -114,8 +115,7 @@
     border: none;
 }
 
-.full-progress,
-.help-block {
+.full-progress, .help-block {
     position: absolute;
     top: 60%;
     left: 50%;
@@ -126,15 +126,13 @@
     top: 57%;
 }
 
-.full-progress .text,
-.help-block .text {
+.full-progress .text, .help-block .text {
     color: #ffffff;
     font-size: 30rpx;
     text-align: center;
 }
 
-.full-progress .share-btn,
-.help-block .help-btn {
+.full-progress .share-btn, .help-block .help-btn {
     background: #f24c00;
     border-radius: 50rpx;
     font-size: 30rpx;

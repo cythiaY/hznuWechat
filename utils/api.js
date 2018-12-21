@@ -89,13 +89,36 @@ export function applyActivity(opts = {}) {
         data: opts
     })
 }
-
+/**
+ * 获取个人活动进度
+ * @param {*} activityNo 
+ */
 export function getUserProgress(activityNo = '') {
     return Util.ajax({
         url: `light/activity/user/get?activityNo=${activityNo}`,
         method: 'get',
     })
 }
-// saveUserInfo(){
-//     'POST /light/author/save/userInfo'
-// }
+
+/**
+ * 获取朋友的活动进度
+ * @param {*} activityNo 
+ */
+export function getOthersProgress(signUpNo = '') {
+    return Util.ajax({
+        url: `light/activity/progresses?signUpNo=${signUpNo}`,
+        method: 'get',
+    })
+}
+
+/**
+ * 保存用户授权信息
+ * @param {*} opts 
+ */
+export function saveUserInfo(opts = {}) {
+    return Util.ajax({
+        url: 'light/author/save/userInfo',
+        method: 'post',
+        data: opts
+    })
+}
