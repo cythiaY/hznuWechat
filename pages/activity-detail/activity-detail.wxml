@@ -1,34 +1,41 @@
 <!-- pages/activity-detail/activity-detail.wxml -->
 <view class="act-desc">
     <image class="bg-img" src="https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000002.png" mode="widthFix"></image>
-    <view wx:if="{{status === 0}}" class="sign-up">
+    <view wx:if="{{myProgress.status === 0}}" class="sign-up">
         <view class="sign-btn" bindtap="openForm">免费领取</view>
     </view>
-    <view wx:elif="{{status === 1}}" class="progress">
+    <view wx:elif="{{myProgress.status === 1}}" class="progress">
         <view class="text">
             已有
-            <span style="color:#f24c00;font-weight:500">{{finishedCount}}</span>
+            <span style="color:#f24c00;font-weight:500">{{myProgress.finishedCount}}</span>
             人助力，快去拉好友助力，免费拿苹果!
         </view>
         <view style="overflow:hidden">
-            <progress class="progress-slide" percent="{{precentNum}}" stroke-width="6" border-radius="6" activeColor="#f24c00" backgroundColor="#ffffff" />
-            <view class="progress-value">{{finishedCount}} / {{performableCount}}</view>
+            <progress class="progress-slide" percent="{{myProgress.precentNum}}" stroke-width="6" border-radius="6" activeColor="#f24c00" backgroundColor="#ffffff" />
+            <view class="progress-value">
+                {{myProgress.finishedCount}} / {{myProgress.performableCount}}
+            </view>
         </view>
         <button class="share-btn" plain size="mini" open-type="share">邀请校友</button>
     </view>
-    <view wx:elif="{{status === 2}}" class="full-progress">
+    <view wx:elif="{{myProgress.status === 2}}" class="full-progress">
         <view class="text">你已获得活动奖品，快去把活动分享给校友吧!</view>
         <button class="share-btn" plain size="mini" open-type="share">分享给校友</button>
     </view>
-    <view wx:elif="{{status === 3}}" class="help-block">
+    <view wx:elif="{{otherProgress.status === 3}}" class="help-block">
         <view class="text">
             快来助力你的小伙伴～
             <text>\n</text>
-            TA的进度  <text style="color: #f24c00">{{finishedCount}} / {{performableCount}}</text>
+            TA的进度
+            <span style="color: #f24c00">
+                {{otherProgress.finishedCount}} / {{otherProgress.performableCount}}
+            </span>
         </view>
         <button class="help-btn" plain size="mini" bindtap="helpFriend">帮TA助力</button>
-
-        <button class="apply-btn" plain size="mini" bindtap="openForm">我也来参与</button>
+        <button wx:if="{{otherProgress.status !== 0}}" style="margin-left:14%;" class="apply-btn" plain size="mini" bindtap="showMyProgress">
+            查看我的进度
+        </button>
+        <button wx:else class="apply-btn" plain size="mini" bindtap="openForm">我也来参与</button>
     </view>
     <view wx:if="{{showForm}}" class="sign-form-bg">
         <view class="sign-form">
@@ -58,6 +65,6 @@
         </view>
         <image class="close-form" src="../../assets/images/close.png" bindtap="closeFrom"></image>
     </view>
-    <view wx:if="{{status === 1}}" class="create-btn" bindtap="createImg">生成分享图</view>
+    <view wx:if="{{!signUpNo && myProgress.status === 1}}" class="create-btn" bindtap="createImg">生成分享图</view>
     <canvas class="share-canvas" canvas-id="shareCanvas"></canvas>
 </view>
