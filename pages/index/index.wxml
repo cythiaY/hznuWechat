@@ -15,10 +15,10 @@
     </view>
     <view class="list">
         <view wx:if="{{listData.length > 0}}">
-            <view class="list-item" wx:for="{{listData}}" wx:key="index">
+            <view class="list-item" wx:for="{{listData}}" wx:key="index" bindtap="goToTalkDetail" data-id="{{item.talkNo}}">
                 <image class="head-img" src="{{item.wechatAvatar}}"></image>
-                <view class="nickname">{{item.wechatNickName}}</view>
-                <view bindtap="goToTalkDetail" data-id="{{item.talkNo}}" class="list-content">{{item.talkContext}}</view>
+                <view class="nickname">{{item.wechatNickName}}<view class="time">{{item.createTime}}</view></view>
+                <view class="list-content">{{item.talkContext}}</view>
                 <view class="content-imgs">
                     <image wx:for="{{item.imgs}}" wx:key="index" class="upload-image" src="{{item.imgUrl}}"></image>
                 </view>

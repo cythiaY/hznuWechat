@@ -1,4 +1,5 @@
 /* pages/content/content.wxss */
+
 .content-detail {
     padding: 32rpx;
     padding-bottom: 110rpx;
@@ -144,7 +145,6 @@
 
 .reply-item .content {
     color: #6b6b6b;
-
 }
 
 .comment-replies .more-replies {
@@ -163,29 +163,29 @@
 
 .bottom .comment-write {
     background: #ebebeb;
-    height: 60rpx;
+    height: 80rpx;
     border-radius: 8rpx;
 }
 
 .bottom .write-img {
-    width: 24rpx;
-    height: 28rpx;
+    width: 32rpx;
+    height: 40rpx;
     float: left;
-    margin: 16rpx;
+    margin: 20rpx;
 }
 
 .bottom .comment-input {
     font-size: 26rpx;
     float: left;
-    width: 80%;
-    line-height: 60rpx;
-    min-height: 60rpx;
+    width: 75%;
+    line-height: 80rpx;
+    min-height: 80rpx;
 }
 
 .bottom .confirm-img {
     float: right;
-    width: 24rpx;
-    height: 28rpx;
+    width: 44rpx;
+    height: 48rpx;
     margin: 16rpx;
 }
 

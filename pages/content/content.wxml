@@ -49,7 +49,7 @@
 <view class="bottom">
     <view class="comment-write">
         <image class="write-img" src="../../assets/images/write.png"></image>
-        <input placeholder="{{inputPlaceholder || '写下你的评论...'}}" focus="{{replyFocus}}" bindblur="getInputValue" maxlength="100" class="comment-input" placeholder-class="input-placeholder" value="{{commentText}}" auto-height></input>
+        <input placeholder="{{inputPlaceholder || '写下你的评论...'}}" focus="{{replyFocus}}" bindconfirm="clickSend" bindblur="getInputValue" maxlength="100" class="comment-input" placeholder-class="input-placeholder" value="{{commentText}}" auto-height></input>
         <image bindtap="clickSend" class="confirm-img" src="../../assets/images/send.png"></image>
     </view>
 </view>

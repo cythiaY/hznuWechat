@@ -16,7 +16,8 @@ Page({
     onShow() {
         if (this.data.filters.length > 0) {
             this.setData({
-                keyword: ''
+                keyword: '',
+                activeFilter: 0
             })
             this.getTalkList()
         }
@@ -26,6 +27,8 @@ Page({
         this.data.pageNum = 0
         data.offset = 0
         Api.getTalkList(data).then(res => {
+            wx.hideNavigationBarLoading()
+            wx.stopPullDownRefresh()
             this.setData({
                 listData: res.data
             })
@@ -69,6 +72,11 @@ Page({
         wx.navigateTo({
             url: `/pages/content/content?id=${e.currentTarget.dataset.id}`
         })
+    },
+    // 下拉加载
+    onPullDownRefresh: function () {
+        wx.showNavigationBarLoading()
+        this.getTalkList()
     },
     // 加载更多
     onReachBottom() {

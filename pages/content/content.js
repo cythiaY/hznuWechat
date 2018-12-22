@@ -32,8 +32,8 @@ Page({
     // 获取言论的评论
     getCommentList() {
         Api.getTalkCommentDetail(this.data.id).then(res => {
-            wx.hideNavigationBarLoading() //在标题栏中隐藏加载
-            wx.stopPullDownRefresh() //停止下拉刷新
+            wx.hideNavigationBarLoading()
+            wx.stopPullDownRefresh()
             this.setData({
                 comments: res.data.commitList,
                 commentNum: res.data.total
@@ -109,6 +109,7 @@ Page({
                 this.setData({
                     commentText: ''
                 })
+                this.getCommentList()
             } else {
                 wx.showToast({
                     title: '评论失败，请稍后重试～',
@@ -123,9 +124,6 @@ Page({
      */
     onPullDownRefresh: function () {
         wx.showNavigationBarLoading() //在标题栏中显示加载
-        // wx.showLoading({
-        //     title: '加载中'
-        //   })
         this.getDetailInfo()
         this.getCommentList()
     },

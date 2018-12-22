@@ -78,6 +78,14 @@
     font-weight: 500;
 }
 
+.nickname .time {
+    display: inline-block;
+    margin-left: 40rpx;
+    font-size: 24rpx;
+    color: #dcdcdc;
+    line-height: 60rpx;
+}
+
 .list-item .list-content {
     font-size: 28rpx;
     color: #787878;

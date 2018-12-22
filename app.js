@@ -47,20 +47,24 @@ App({
             },
             method: 'post',
         }
+        let _this = this
         return this.ajax(obj).then(res => {
             wx.hideLoading()
             wx.setStorageSync('sid', res.sid)
         }).catch((res) => {
+            console.log(res)
             if (res.code === "1001") {
                 wx.setStorageSync('sid', '')
-                this.initApp()
+                _this.initApp()
             } else {
-                wx.showToast({
-                    title: '抱歉，获取token失败',
-                    icon: 'none',
-                    duration: 3000
-                })
-                return Promise.reject(res)
+                // wx.showToast({
+                //     title: '抱歉，获取token失败',
+                //     icon: 'none',
+                //     duration: 3000
+                // })
+                wx.setStorageSync('sid', '')
+                _this.initApp()
+                // return Promise.reject(res)
             }
         })
     },
