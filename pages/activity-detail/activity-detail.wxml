@@ -53,6 +53,6 @@
         </view>
         <image class="close-form" src="../../assets/images/close.png" bindtap="closeFrom"></image>
     </view>
-    <view bindtap="createImg">生成分享图</view>
-    <canvas style="width: 375px; height: 667px;" class="share-canvas" canvas-id="shareCanvas"></canvas>
+    <view wx:if="{{status === 1}}" class="create-btn" bindtap="createImg">生成分享图</view>
+    <canvas class="share-canvas" canvas-id="shareCanvas"></canvas>
 </view>

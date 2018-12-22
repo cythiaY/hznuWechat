@@ -1,4 +1,5 @@
 {
   "navigationBarTitleText": "杭师小盒子",
-  "onReachBottomDistance": 100
+  "onReachBottomDistance": 100,
+  "enablePullDownRefresh": true
 }

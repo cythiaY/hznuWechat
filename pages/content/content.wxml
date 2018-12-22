@@ -1,13 +1,13 @@
 <!-- pages/content/content.wxml -->
 <view class="content-detail">
     <view class="head">
-        <image class="head-img" src="{{detailInfo.imgUrl}}"></image>
-        <view class="user-name">{{detailInfo.nickname}}</view>
+        <image class="head-img" src="{{detailInfo.wechatAvatar}}"></image>
+        <view class="user-name">{{detailInfo.wechatNickName}}</view>
         <view class="post-time">{{detailInfo.updateTime}}</view>
     </view>
     <text class="context" selectable="{{true}}" decode>&emsp;&emsp;{{detailInfo.talkContext}}</text>
     <view class="talk-imgs">
-        <image wx:for="{{detailInfo.talkImg}}" wx:key="index" class="image-item" src="{{item}}" data-current="{{item}}" bindtap="previewImage"></image>
+        <image wx:for="{{detailInfo.imgs}}" wx:key="{{index}}" class="image-item" src="{{item.imgUrl}}" data-current="{{index}}" bindtap="previewImage"></image>
     </view>
     <view class="options">
         <!-- <view class="option-item">
@@ -19,18 +19,22 @@
             <span class="option-num">{{commentNum}}</span>
         </view>
         <view class="option-item">
-            <image class="option-icon" src="../../assets/images/share.png"></image>
+            <button class="share-btn" plain size="mini" open-type="share">
+                <image class="option-icon" src="../../assets/images/share.png"></image>
+            </button>
         </view>
     </view>
     <view class="comments">
         <view class="comment-item" wx:for="{{comments}}" wx:key="index">
             <view class="owner-comment">
                 <view class="owner-comment-head">
-                    <image class="head-img" src="{{item.imgUrl}}"></image>
+                    <image class="head-img" src="{{item.wechatAvatar}}"></image>
                     <view class="user-name">{{item.wechatNickName}}</view>
                     <view class="post-time">{{item.createTime}}</view>
                 </view>
-                <view class="owner-context" data-commentno="{{item.commentNo}}" data-name="{{item.wechatNickName}}"  bindlongpress="replayPress">{{item.commentContext}}</view>
+                <view class="owner-context" data-commentno="{{item.commentNo}}" data-name="{{item.wechatNickName}}" bindlongpress="replayPress">
+                    {{item.commentContext}}
+                </view>
             </view>
             <view class="comment-replies">
                 <view class="reply-item" wx:for="{{item.list}}" wx:key="index">

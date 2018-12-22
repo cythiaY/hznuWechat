@@ -64,6 +64,11 @@
     height: 36rpx;
 }
 
+.option-item .share-btn {
+    padding: 0;
+    border: none;
+}
+
 .content-detail .comment-icon::after {
     content: "";
     display: block;

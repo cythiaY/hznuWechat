@@ -13,44 +13,8 @@ Page({
         replyFocus: false,
         inputPlaceholder: '',
         parentCommitNo: null,
-        detailInfo: {
-            imgUrl: 'https://tva1.sinaimg.cn/crop.4.0.632.632.180/006AiaaWjw8f89kzrgkkyj30hs0hk3zv.jpg',
-            nickname: 'white',
-            time: '2018-12-12 00:00:00',
-            talkContext: "双十一后要吃土的童鞋注意一下，老区的土质较差口感不好，畅志园的土比黏容易粘牙。新区食品院附近树下的土带有一点甜味，是真的评价土质的口感，了。",
-            talkImg: ['https://wx4.sinaimg.cn/orj360/006AiaaWly1fy37z8vourj31120ku40g.jpg', 'https://wx4.sinaimg.cn/crop.0.32.790.439/7077dc1dly1fy1wga4c2yj20ly0lyarj.jpg', "https://ww1.sinaimg.cn/bmiddle/61e7f4aaly1fy79fzf64gj20hi0f4aaz.jpg"],
-        },
-        comments: [{
-                imgUrl: 'https://tva1.sinaimg.cn/crop.4.0.632.632.180/006AiaaWjw8f89kzrgkkyj30hs0hk3zv.jpg',
-                nickname: 'white',
-                time: '2018-12-12 00:00:00',
-                commentContext: '这是一条评论',
-                replies: [{
-                        nickname: 'white',
-                        replyContext: '这是一条评论回复',
-                    },
-                    {
-                        nickname: 'white',
-                        replyContext: '这是另一条评论回复',
-                    }
-                ]
-            },
-            {
-                imgUrl: 'https://tva1.sinaimg.cn/crop.4.0.632.632.180/006AiaaWjw8f89kzrgkkyj30hs0hk3zv.jpg',
-                nickname: 'white',
-                time: '2018-12-12 00:00:00',
-                commentContext: '这是一条评论',
-                replies: [{
-                        nickname: 'white',
-                        replyContext: '这是一条评论回复',
-                    },
-                    {
-                        nickname: 'white',
-                        replyContext: '这是另一条评论回复',
-                    }
-                ]
-            }
-        ]
+        detailInfo: {},
+        comments: []
     },
     onLoad: function (options) {
         this.data.id = options.id
@@ -63,12 +27,15 @@ Page({
             this.setData({
                 detailInfo: res.data
             })
+            console.log('bbb')
         })
     },
     // 获取言论的评论
     getCommentList() {
         Api.getTalkCommentDetail(this.data.id).then(res => {
             console.log(res)
+            wx.hideNavigationBarLoading() //在标题栏中隐藏加载
+            wx.stopPullDownRefresh() //停止下拉刷新
             this.setData({
                 comments: res.data.commitList,
                 commentNum: res.data.total
@@ -85,9 +52,10 @@ Page({
     },
     // 查看大图
     previewImage(e) {
+        let arr = this.data.detailInfo.imgs.map((element) => element.imgUrl)
         wx.previewImage({
             current: e.target.dataset.current,
-            urls: this.data.content.talkImg
+            urls: arr
         })
     },
     getInputValue(e) {
@@ -156,12 +124,21 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+        wx.showNavigationBarLoading() //在标题栏中显示加载
+        // wx.showLoading({
+        //     title: '加载中'
+        //   })
+        this.getDetailInfo()
+        this.getCommentList()
     },
     /**
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
+        return {
+            // imageUrl: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000001.png',
+            title: '发现一个有趣的内容，分享给你哦～',
+            path: `pages/content/cintent?id=${this.data.id}`
+        }
     },
 })

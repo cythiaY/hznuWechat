@@ -15,7 +15,8 @@ Page({
         finishedCount: null,
         performableCount: null,
         precentNum: null,
-        mysrc: ''
+        shareBgImg: '',
+        cxCodeImg: ''
     },
     onLoad: function (options) {
         this.data.id = options.id
@@ -23,6 +24,19 @@ Page({
         if (options.signUpNo) {
             this.data.signUpNo = options.signUpNo
         }
+        let _this = this
+        wx.getImageInfo({
+            src: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000002.png',
+            success: function (res) {
+                _this.data.shareBgImg = res.path
+            }
+        })
+        wx.getImageInfo({
+            src: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812190000030.png',
+            success: function (res) {
+                _this.data.cxCodeImg = res.path
+            }
+        })
     },
     onShow: function () {
         console.log(1)
@@ -165,54 +179,21 @@ Page({
         } else {
             param = `activityNo=${this.data.id}`
         }
-        console.log(param)
         return {
             imageUrl: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000001.png',
             title: '帮我助力，免费领取平安果，你也可以参加哦',
             path: `pages/activity-detail/activity-detail?${param}`
         }
     },
+    // 生成分享图到本地相册
     createImg() {
-        let _this = this
-        let canvasWidth, canvasHeight, path
-        wx.getSystemInfo({
-            success: function (res) {
-                // _this.setData({
-                // screenWidth: res.screenWidth,
-                // screenHeight: res.screenHeight,
-                canvasWidth = res.screenWidth / 375 * 350
-                canvasHeight = res.screenHeight / 667 * 500
-                //   })
-            }
-        })
-        wx.getImageInfo({
-            src: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000020.png',
-            success: function (res) {
-                _this.data.mysrc = res.path
-                // TODO 绘制分享canvas图draw 
-                // TODO 绘制成功后，把canvas转化成图片wx.canvasToTempFilePath 
-                // TODO 转成功后，自动保存图片到系统相册wx.saveImageToPhotosAlbum    
-            }
-        })
-        // wx.downloadFile({
-        //     url: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000020.png',
-        //     success: function (sres) {
-        //         console.log(sres);
-        //         _this.data.mysrc = sres.tempFilePath
-        //     },
-        //     fail: function (fres) {
-
-        //     }
-        // })
-
         wx.showLoading({
             title: '正在生成分享图...',
             mask: true
         })
         const context = wx.createCanvasContext('shareCanvas')
-        context.drawImage(this.data.mysrc, 0, 0, canvasWidth, canvasHeight)
-        context.draw()
-        // context.save()
+        context.drawImage(this.data.shareBgImg, 0, 0, 375, 667)
+        context.drawImage(this.data.cxCodeImg, 0, 0, 100, 100, 140, 330, 100, 100)
         context.draw(true, setTimeout(function () {
             wx.canvasToTempFilePath({
                 canvasId: 'shareCanvas',
@@ -228,28 +209,6 @@ Page({
                     })
                 }
             })
-        }, 1000))
-
-
-        //将生成好的图片保存到本地，需要延迟一会，绘制期间耗时
-        // setTimeout(() => {
-        //     wx.canvasToTempFilePath({
-        //             canvasId: 'shareCanvas',
-        //             success: function (res) {
-        //                 wx.hideLoading()
-        //                 // _this.setData({
-        //                 //     imagePath: res.tempFilePath
-        //                 // })
-        //                 wx.saveImageToPhotosAlbum({
-        //                     filePath: res.tempFilePath,
-        //                   })
-        //             },
-        //             fail: function (res) {
-        //                 console.log(res.errMsg)
-        //             }
-        //         },
-        //         this
-        //     )
-        // }, 2000)
+        }, 2000))
     }
 })
