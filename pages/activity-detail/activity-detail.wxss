@@ -114,43 +114,27 @@
     border: none;
 }
 
-.full-progress,
-.help-block {
+.full-progress {
     position: absolute;
     top: 60%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.help-block {
-    top: 59%;
-}
 
-.full-progress .text,
-.help-block .text {
+.full-progress .text {
     color: #ffffff;
     font-size: 30rpx;
     text-align: center;
 }
 
-.full-progress .share-btn,
-.help-block .help-btn {
+.full-progress .share-btn {
     background: #f24c00;
     border-radius: 50rpx;
     font-size: 30rpx;
     color: #ffffff;
     margin-top: 20rpx;
     margin-left: 20%;
-    border: none;
-}
-
-.help-block .apply-btn {
-    background: #ffffff;
-    border-radius: 50rpx;
-    font-size: 30rpx;
-    color: #f24c00;
-    margin-top: 10rpx;
-    margin-left: 17%;
     border: none;
 }
 

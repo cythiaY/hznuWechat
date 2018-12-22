@@ -77,63 +77,21 @@
     transform: translateX(-50%);
 }
 
-.progress {
+.help-block {
     position: absolute;
     top: 59%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.progress .text {
-    color: #ffffff;
-    font-size: 34rpx;
-    text-align: center;
-}
 
-.progress .progress-slide {
-    margin: 20rpx 10rpx 20rpx 0;
-    width: 70%;
-    float: left;
-}
-
-.progress-value {
-    float: left;
-    font-size: 26rpx;
-    color: #f24c00;
-    text-align: center;
-    line-height: 52rpx;
-}
-
-.progress .share-btn {
-    background: #f24c00;
-    border-radius: 50rpx;
-    font-size: 30rpx;
-    color: #ffffff;
-    margin-top: 20rpx;
-    margin-left: 20%;
-    border: none;
-}
-
-.full-progress,
-.help-block {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.help-block {
-    top: 59%;
-}
-
-.full-progress .text,
 .help-block .text {
     color: #ffffff;
     font-size: 30rpx;
     text-align: center;
 }
 
-.full-progress .share-btn,
+
 .help-block .help-btn {
     background: #f24c00;
     border-radius: 50rpx;
@@ -152,21 +110,4 @@
     margin-top: 10rpx;
     margin-left: 17%;
     border: none;
-}
-
-.create-btn {
-    position: absolute;
-    top: 250rpx;
-    right: 90rpx;
-    color: #ffffff;
-    font-size: 34rpx;
-    text-decoration: underline;
-    text-shadow: #fa5167 0.1em 0.1em 0.4em;
-}
-
-.share-canvas {
-    width: 375px;
-    height: 667px;
-    position: absolute;
-    left: -400px;
 }
