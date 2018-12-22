@@ -21,8 +21,13 @@
         <button class="share-btn" plain size="mini" open-type="share">分享给校友</button>
     </view>
     <view wx:elif="{{status === 3}}" class="help-block">
-        <view class="text">免费拿苹果，快来助力你的小伙伴～\n TA的进度{{finishedCount}} / {{performableCount}}</view>
-        <button class="help-btn" plain size="mini">帮TA助力</button>
+        <view class="text">
+            快来助力你的小伙伴～
+            <text>\n</text>
+            TA的进度  <text style="color: #f24c00">{{finishedCount}} / {{performableCount}}</text>
+        </view>
+        <button class="help-btn" plain size="mini" bindtap="helpFriend">帮TA助力</button>
+
         <button class="apply-btn" plain size="mini" bindtap="openForm">我也来参与</button>
     </view>
     <view wx:if="{{showForm}}" class="sign-form-bg">

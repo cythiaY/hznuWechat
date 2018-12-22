@@ -144,3 +144,13 @@ export function postConent(opts = {}) {
         data: opts
     })
 }
+/**
+ * 帮助好友点赞
+ * @param {*}  
+ */
+export function helpFriend(activityNo = '', signUpNo = '') {
+    return Util.ajax({
+        url: `light/activity/like?activityNo=${activityNo}&signUpNo=${signUpNo}`,
+        method: 'get',
+    })
+}

@@ -41,7 +41,6 @@ App({
      * 
      */
     initToken() {
-        let _this = this
         let obj = {
             url: 'light/author/wechat/default',
             data: {
@@ -53,12 +52,17 @@ App({
             wx.hideLoading()
             wx.setStorageSync('sid', res.sid)
         }).catch((res) => {
-            wx.showToast({
-                title: '抱歉，获取token失败',
-                icon: 'none',
-                duration: 3000
-            })
-            return Promise.reject(res)
+            if (res.code === "1001") {
+                wx.setStorageSync('sid', '')
+                this.initApp()
+            } else {
+                wx.showToast({
+                    title: '抱歉，获取token失败',
+                    icon: 'none',
+                    duration: 3000
+                })
+                return Promise.reject(res)
+            }
         })
     },
     /**

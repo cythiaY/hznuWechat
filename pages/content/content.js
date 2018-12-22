@@ -33,7 +33,6 @@ Page({
     // 获取言论的评论
     getCommentList() {
         Api.getTalkCommentDetail(this.data.id).then(res => {
-            console.log(res)
             wx.hideNavigationBarLoading() //在标题栏中隐藏加载
             wx.stopPullDownRefresh() //停止下拉刷新
             this.setData({

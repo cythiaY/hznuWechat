@@ -20,7 +20,6 @@ Page({
     },
     onLoad: function (options) {
         this.data.id = options.id
-        console.log(3, options)
         if (options.signUpNo) {
             this.data.signUpNo = options.signUpNo
         }
@@ -39,7 +38,6 @@ Page({
         })
     },
     onShow: function () {
-        console.log(1)
         this.getUserProgress()
     },
     // 查看进度
@@ -49,6 +47,8 @@ Page({
         } else {
             // 查看自己的进度
             Api.getUserProgress(this.data.id).then(res => {
+                wx.hideNavigationBarLoading() //在标题栏中隐藏加载
+                wx.stopPullDownRefresh() //停止下拉刷新
                 switch (res.data.status) {
                     // 未参与
                     case 'NOT_INVOLVED':
@@ -84,12 +84,32 @@ Page({
     // 查看朋友的进度
     getOthersProgress() {
         Api.getOthersProgress(this.data.signUpNo).then(res => {
+            wx.hideNavigationBarLoading() //在标题栏中隐藏加载
+            wx.stopPullDownRefresh() //停止下拉刷新
             this.setData({
                 status: 3,
                 finishedCount: res.data.finishedCount,
                 performableCount: res.data.performableCount,
                 precentNum: parseInt(res.data.finishedCount / res.data.performableCount * 100)
             })
+        })
+    },
+    // 帮好友点赞
+    helpFriend() {
+        Api.helpFriend(this.data.id, this.data.signUpNo).then((res) => {
+            if (res.success) {
+                wx.showToast({
+                    title: '真棒，你又帮一位好友助力啦！',
+                    icon: 'none',
+                    duration: 3000
+                })
+            } else {
+                wx.showToast({
+                    title: res.msg,
+                    icon: 'none',
+                    duration: 3000
+                })
+            }
         })
     },
     openForm() {
@@ -167,6 +187,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+        wx.showNavigationBarLoading()
         this.getUserProgress()
     },
     /**
