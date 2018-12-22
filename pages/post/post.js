@@ -69,7 +69,6 @@ Page({
                     title: '加载中',
                 })
                 const tempFilePaths = res.tempFilePaths
-                console.log('created', res.tempFilePaths)
                 tempFilePaths.forEach(element => {
                     wx.uploadFile({
                         url: Util.BASE_URL + 'light/upload', // 仅为示例，非真实的接口地址
