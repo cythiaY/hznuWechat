@@ -4,7 +4,8 @@
     "pages/activity/activity",
     "pages/content/content",
     "pages/post/post",
-    "pages/activity-detail/activity-detail"
+    "pages/activity-detail/activity-detail",
+    "pages/other-act-detail/other-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

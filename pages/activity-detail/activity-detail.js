@@ -16,31 +16,18 @@ Page({
             performableCount: null,
             precentNum: null,
         },
-        otherProgress: {
-            status: null, // 帮好友点赞; 
-            finishedCount: null,
-            performableCount: null,
-            precentNum: null,
-        },
         shareBgImg: '',
         cxCodeImg: ''
     },
     onLoad: function (options) {
         this.data.id = options.id
-        if (options.signUpNo) {
-            this.data.signUpNo = options.signUpNo
-        }
     },
     onShow: function () {
         wx.showLoading()
-        if (this.data.signUpNo) {
-            this.getOthersProgress()
-        }
         this.getUserProgress()
     },
-    // 查看进度
+    // 查看自己的进度
     getUserProgress() {
-        // 查看自己的进度
         Api.getUserProgress(this.data.id).then(res => {
             wx.hideNavigationBarLoading()
             wx.stopPullDownRefresh()
@@ -51,6 +38,7 @@ Page({
                     {
                         this.setData({
                             'myProgress.status': 0,
+                            signUpNo: res.data.signUpNo
                         })
                         break;
                     }
@@ -61,7 +49,8 @@ Page({
                             'myProgress.status': 1,
                             'myProgress.finishedCount': res.data.finishedCount,
                             'myProgress.performableCount': res.data.performableCount,
-                            'myProgress.precentNum': parseInt(res.data.finishedCount / res.data.performableCount * 100)
+                            'myProgress.precentNum': parseInt(res.data.finishedCount / res.data.performableCount * 100),
+                            signUpNo: res.data.signUpNo
                         })
                         break;
                     }
@@ -70,47 +59,10 @@ Page({
                     {
                         this.setData({
                             'myProgress.status': 2,
+                            signUpNo: res.data.signUpNo
                         })
                         break;
                     }
-            }
-        })
-    },
-    // 查看朋友的进度
-    getOthersProgress() {
-        Api.getOthersProgress(this.data.signUpNo).then(res => {
-            wx.hideNavigationBarLoading()
-            wx.stopPullDownRefresh()
-            wx.hideLoading()
-            this.setData({
-                'otherProgress.status': 3,
-                'otherProgress.finishedCount': res.data.finishedCount,
-                'otherProgress.performableCount': res.data.performableCount,
-                'otherProgress.precentNum': parseInt(res.data.finishedCount / res.data.performableCount * 100)
-            })
-        })
-    },
-    // 从好友分享页面切换到我的进度页面
-    showMyProgress() {
-        wx.redirectTo({
-            url: `/pages/activity-detail/activity-detail?id=${this.data.id}`
-        });
-    },
-    // 帮好友点赞
-    helpFriend() {
-        Api.helpFriend(this.data.id, this.data.signUpNo).then((res) => {
-            if (res.success) {
-                wx.showToast({
-                    title: '真棒，你又帮一位好友助力啦！',
-                    icon: 'none',
-                    duration: 3000
-                })
-            } else {
-                wx.showToast({
-                    title: res.msg,
-                    icon: 'none',
-                    duration: 3000
-                })
             }
         })
     },
@@ -196,17 +148,10 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-        let param = ''
-        if (this.data.signUpNo) {
-            param = `activityNo=${this.data.id}&signUpNo=${this.data.signUpNo}`
-        } else {
-            return
-        }
-        console.log(param)
         return {
             imageUrl: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000001.png',
             title: '帮我助力，免费领取平安果，你也可以参加哦',
-            path: `pages/activity-detail/activity-detail?${param}`
+            path: `pages/other-act-detail/other-detail?activityNo=${this.data.id}&signUpNo=${this.data.signUpNo}`
         }
     },
     // 预先生成分享图

@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -68,6 +68,12 @@
 					"name": "活动详情自己",
 					"pathName": "pages/activity-detail/activity-detail",
 					"query": "id=1001"
+				},
+				{
+					"id": 5,
+					"name": "活动详情朋友",
+					"pathName": "pages/other-act-detail/other-detail",
+					"query": "id=1001&signUpNo=60118121900003"
 				}
 			]
 		}
