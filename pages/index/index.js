@@ -32,6 +32,11 @@ Page({
             this.setData({
                 listData: res.data
             })
+        }).catch(err => {
+            wx.setStorageSync('sid', '');
+            wx.setStorageSync('teamCode', '');
+            this.getTalkList()
+            console.warn(err)
         })
     },
     // 筛选列表

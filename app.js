@@ -9,7 +9,6 @@ App({
     /**
      * 
      * 初始小程序 token和其他数据
-     * @argument arguments[0] 强制重新login
      * @returns Promise
      * 
      */
@@ -45,6 +44,9 @@ App({
             data: {
                 code: arguments[0]
             },
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
             method: 'post',
         }
         let _this = this
@@ -62,9 +64,7 @@ App({
                 //     icon: 'none',
                 //     duration: 3000
                 // })
-                wx.setStorageSync('sid', '')
-                _this.initApp()
-                // return Promise.reject(res)
+                return Promise.reject(res)
             }
         })
     },
@@ -99,8 +99,5 @@ App({
                 }
             })
         })
-    },
-    globalData: {
-        token: ''
     }
 })
