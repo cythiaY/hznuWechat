@@ -19,7 +19,6 @@ App({
             return new Promise((resolve, reject) => {
                     wx.login({
                         success(res) {
-                            console.log('res', res)
                             resolve(res.code)
                         },
                         fail(res) {

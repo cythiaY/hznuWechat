@@ -3,7 +3,7 @@
     <view class="top">
         <view class="search">
             <image class="search-icon" src="../../assets/images/search.png"></image>
-            <input type="text" placeholder="输入搜索" class="search-input" bindconfirm="searchList" confirm-type="search" />
+            <input type="text" placeholder="输入搜索" value="{{keyword}}" class="search-input" bindconfirm="searchList" confirm-type="search" />
         </view>
         <view class="filters">
             <block wx:for="{{filters}}" wx:key="index">
@@ -29,7 +29,7 @@
                 </view> -->
                     <view class="option-item">
                         <image class="option-icon" src="../../assets/images/comment.png"></image>
-                        <span class="option-num">{{item.commentCount}}</span>
+                        <view class="option-num">{{item.commentCount}}</view>
                     </view>
                     <view class="option-item">
                         <image class="option-icon" src="../../assets/images/share.png"></image>

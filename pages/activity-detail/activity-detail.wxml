@@ -19,8 +19,8 @@
         <button class="share-btn" plain size="mini" open-type="share">邀请校友</button>
     </view>
     <view wx:elif="{{myProgress.status === 2}}" class="full-progress">
-        <view class="text">你已获得活动奖品，快去把活动分享给校友吧!</view>
-        <button class="share-btn" plain size="mini" open-type="share">分享给校友</button>
+        <view class="text">恭喜你，已成功获得活动奖品!</view>
+        <!-- <button class="share-btn" plain size="mini" open-type="share">分享给校友</button> -->
     </view>
     <view wx:if="{{showForm}}" class="sign-form-bg">
         <view class="sign-form">

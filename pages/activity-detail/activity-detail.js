@@ -77,7 +77,6 @@ Page({
         })
     },
     submitForm(e) {
-        console.log(e.detail.value)
         if (!e.detail.value.consignee) {
             wx.showToast({
                 title: '请输入收货人姓名',
@@ -161,18 +160,26 @@ Page({
             mask: true
         })
         let _this = this
-        return new Promise((resolve) => {
-            wx.getImageInfo({
-                src: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000002.png',
-                success: function (res) {
-                    _this.data.shareBgImg = res.path
+        return new Promise((resolve, reject) => {
+            Api.getQrcode(`id=${_this.data.id}&signUpNo=${_this.data.signUpNo}`).then((res) => {
+                console.log('code', res)
+                if (res.success) {
+                    let codeImgUrl = wx.arrayBufferToBase64(res.data);
                     wx.getImageInfo({
-                        src: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812190000030.png',
+                        src: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000002.png',
                         success: function (res) {
-                            _this.data.cxCodeImg = res.path
-                            resolve()
+                            _this.data.shareBgImg = res.path
+                            wx.getImageInfo({
+                                src: codeImgUrl,
+                                success: function (res) {
+                                    _this.data.cxCodeImg = res.path
+                                    resolve()
+                                }
+                            })
                         }
                     })
+                } else {
+                    reject()
                 }
             })
         })
@@ -198,6 +205,12 @@ Page({
                         })
                     }
                 })
+            })
+        }).catch(() => {
+            wx.showToast({
+                title: '生成图片失败，请稍后重试～',
+                icon: 'none',
+                duration: 3000
             })
         })
     }

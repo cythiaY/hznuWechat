@@ -16,8 +16,12 @@ Page({
         }
     },
     onLoad: function (options) {
-        this.data.id = options.id
-        this.data.signUpNo = options.signUpNo
+        console.log('share', options)
+        let strs = decodeURIComponent(options.scene).split('&')
+        let idParams = strs[0].split('=');
+        let noParams = strs[1].split('=');
+        this.data.id = idParams[1]
+        this.data.signUpNo = noParams[1]
     },
     onShow: function () {
         wx.showLoading()
@@ -85,7 +89,6 @@ Page({
         })
     },
     submitForm(e) {
-        console.log(e.detail.value)
         if (!e.detail.value.consignee) {
             wx.showToast({
                 title: '请输入收货人姓名',

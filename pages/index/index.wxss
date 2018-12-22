@@ -13,12 +13,14 @@
     height: 60rpx;
     border-radius: 30rpx;
     background-color: #f4f4f4;
+    overflow: hidden;
 }
 
 .search .search-icon {
     width: 34rpx;
     height: 34rpx;
     margin: 13rpx 34rpx;
+    float: left;
 }
 
 .search .search-input {
@@ -26,7 +28,9 @@
     width: 300rpx;
     color: #b9b9b9;
     font-size: 28rpx;
-    line-height:34rpx;
+    line-height: 34rpx;
+    float: left;
+    margin: 6rpx 0;
 }
 
 .filters {
@@ -116,12 +120,12 @@
 }
 
 .list-item .option-item .option-num {
-    font-size: 20rpx;
-    position: relative;
-    top: -14rpx;
-    left: 8rpx;
+    font-size: 24rpx;
+    display: inline-block;
     color: #787878;
     font-weight: 600;
+    vertical-align: top;
+    margin-left: 8rpx;
 }
 
 .list-item .comments {

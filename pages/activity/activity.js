@@ -10,7 +10,6 @@ Page({
         activities: []
     },
     goToActDetail(e) {
-        console.log(e)
         if (e.currentTarget.dataset.status === "STARTINGUP") {
             wx.navigateTo({
                 url: `/pages/activity-detail/activity-detail?id=${e.currentTarget.dataset.actid}`
@@ -26,7 +25,6 @@ Page({
     // 获取活动列表
     getActivity() {
         Api.getActivityList().then(res => {
-            console.log(res.data)
             this.setData({
                 activities: res.data
             })

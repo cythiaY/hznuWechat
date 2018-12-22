@@ -8,7 +8,7 @@
             <view class="act-content">{{item.activityDesc}}</view>
             <view class="act-num">
                 已参与
-                <span style="color:#fa5167;font-weight:500">{{item.signUpNum}}</span>
+                <span style="color:#fa5167;font-weight:500">{{item.personCount}}</span>
                 人
             </view>
             <view wx:if="{{item.activityStatus === 'UNSTART'}}" class="act-status unStart">未开始</view>

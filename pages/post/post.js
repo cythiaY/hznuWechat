@@ -30,13 +30,10 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-        console.log(Boolean(wx.getStorageSync('hasAuth')))
-        // if(wx.getStorageSync('hasAuth')){
+    onLoad: function () {
         this.setData({
             hasToken: Boolean(wx.getStorageSync('hasAuth'))
         })
-        // }
         this.getChannel()
     },
     /**
@@ -48,7 +45,6 @@ Page({
             wechatAvatar: e.detail.userInfo.avatarUrl
         }
         Api.saveUserInfo(data).then(res => {
-            console.log(res);
             this.setData({
                 hasToken: true
             })
@@ -73,7 +69,7 @@ Page({
                     title: '加载中',
                 })
                 const tempFilePaths = res.tempFilePaths
-                console.log(res.tempFilePaths)
+                console.log('created', res.tempFilePaths)
                 tempFilePaths.forEach(element => {
                     wx.uploadFile({
                         url: Util.BASE_URL + 'light/upload', // 仅为示例，非真实的接口地址
@@ -128,7 +124,6 @@ Page({
         }
         Api.postConent(postData).then(res => {
             this.data.hasSubmit = false
-            console.log(res)
             if (res.success) {
                 wx.showToast({
                     title: '发表成功～去首页看看吧',

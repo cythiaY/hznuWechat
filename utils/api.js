@@ -154,3 +154,13 @@ export function helpFriend(activityNo = '', signUpNo = '') {
         method: 'get',
     })
 }
+/**
+ * 获取二维码
+ * @param {*}  
+ */
+export function getQrcode(scene = '') {
+    return Util.ajax({
+        url: `light/wechat/qrcode?scene=${scene}&page=pages/other-act-detail/other-detail&width=100`,
+        method: 'get',
+    })
+}

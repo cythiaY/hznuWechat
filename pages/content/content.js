@@ -27,7 +27,6 @@ Page({
             this.setData({
                 detailInfo: res.data
             })
-            console.log('bbb')
         })
     },
     // 获取言论的评论
@@ -137,7 +136,7 @@ Page({
         return {
             // imageUrl: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011812210000001.png',
             title: '发现一个有趣的内容，分享给你哦～',
-            path: `pages/content/cintent?id=${this.data.id}`
+            path: `pages/content/content?id=${this.data.id}`
         }
     },
 })
