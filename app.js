@@ -44,9 +44,6 @@ App({
             data: {
                 code: arguments[0]
             },
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
             method: 'post',
         }
         let _this = this
