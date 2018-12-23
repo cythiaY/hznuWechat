@@ -71,7 +71,7 @@ Page({
                 const tempFilePaths = res.tempFilePaths
                 tempFilePaths.forEach(element => {
                     wx.uploadFile({
-                        url: Util.BASE_URL + 'light/upload', // 仅为示例，非真实的接口地址
+                        url: Util.BASE_URL + 'light/upload',
                         filePath: element,
                         name: 'file',
                         method: "Post",
