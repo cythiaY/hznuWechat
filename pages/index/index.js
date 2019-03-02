@@ -8,7 +8,8 @@ Page({
         listData: [],
         keyword: '',
         pageNum: 0,
-        hasMore: true
+        hasMore: true,
+        isShowModel: false
     },
     onLoad: function () {
         this.getChannel()
@@ -106,6 +107,18 @@ Page({
                 listData: this.data.listData.concat(res.data),
             })
             console.log('list', this.data.listData)
+        })
+    },
+    // 二维码model
+    toogleModel() {
+        this.setData({
+            isShowModel: !this.data.isShowModel
+        })
+    },
+    previewImage: function () {
+        wx.previewImage({
+            current: 'https://light-real.oss-cn-hangzhou.aliyuncs.com/6011903020000002.png',
+            urls: ['https://light-real.oss-cn-hangzhou.aliyuncs.com/6011903020000002.png']
         })
     }
 })

@@ -160,3 +160,36 @@
     font-size: 30rpx;
     color: #fa5167;
 }
+
+.contact-icon {
+    position: fixed;
+    right: 40rpx;
+    bottom: 120rpx;
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.excode-model {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.excode-model .excode-image {
+    margin: auto;
+    margin-top: 180rpx;
+    width: 620rpx;
+    height: 620rpx;
+}
+
+.excode-model .model-close {
+    display: block;
+    margin: auto;
+    margin-top: 80rpx;
+    width: 70rpx;
+    height: 70rpx;
+}

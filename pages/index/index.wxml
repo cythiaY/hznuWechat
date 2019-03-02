@@ -17,7 +17,10 @@
         <view wx:if="{{listData.length > 0}}">
             <view class="list-item" wx:for="{{listData}}" wx:key="index" bindtap="goToTalkDetail" data-id="{{item.talkNo}}">
                 <image class="head-img" src="{{item.wechatAvatar}}"></image>
-                <view class="nickname">{{item.wechatNickName}}<view class="time">{{item.createTime}}</view></view>
+                <view class="nickname">
+                    {{item.wechatNickName}}
+                    <view class="time">{{item.createTime}}</view>
+                </view>
                 <view class="list-content">{{item.talkContext}}</view>
                 <view class="content-imgs">
                     <image wx:for="{{item.imgs}}" wx:key="index" class="upload-image" src="{{item.imgUrl}}"></image>
@@ -45,4 +48,9 @@
         </view>
         <view wx:else class="list-none">当前板块没有内容，快来抢沙发吧～</view>
     </view>
+    <image class="contact-icon" bindtap="previewImage" src="../../assets/images/contact.png"></image>
+    <!-- <view wx:if="{{isShowModel}}" class="excode-model">
+        <image class="excode-image" src="../../assets/images/excode.png" bindtap="previewImage"></image>
+        <image class="model-close" bindtap="toogleModel" src="../../assets/images/close.png"></image>
+    </view> -->
 </view>

@@ -10,7 +10,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "杭师小盒子",
+    "navigationBarTitleText": "杭师大小盒子",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
