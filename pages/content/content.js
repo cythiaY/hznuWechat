@@ -14,10 +14,14 @@ Page({
         inputPlaceholder: '',
         parentCommitNo: null,
         detailInfo: {},
-        comments: []
+        comments: [],
+        hasToken: false
     },
     onLoad: function (options) {
         this.data.id = options.id
+        this.setData({
+            hasToken: Boolean(wx.getStorageSync('hasAuth'))
+        })
         this.getDetailInfo()
         this.getCommentList()
     },
@@ -63,8 +67,29 @@ Page({
         })
         this.data.commentText = e.detail.value
     },
+    /**
+     * 获取用户信息
+     */
+    getUserInfo(e) {
+        let data = {
+            wechatNickName: e.detail.userInfo.nickName,
+            wechatAvatar: e.detail.userInfo.avatarUrl
+        }
+        Api.saveUserInfo(data).then(res => {
+            this.setData({
+                hasToken: true
+            })
+            wx.setStorageSync('hasAuth', true)
+            this.clickSend()
+        })
+    },
     // 点击发送评论
-    clickSend() {
+    clickSend(event) {
+        if (event && event.detail.value) {
+            this.setData({
+                commentText: event.detail.value
+            })
+        }
         if (!this.data.commentText) {
             wx.showToast({
                 title: '评论内容不能为空～',

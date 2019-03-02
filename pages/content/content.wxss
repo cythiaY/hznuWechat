@@ -189,6 +189,14 @@
     margin: 16rpx;
 }
 
+.bottom .confirm-button {
+    background-color: #ebebeb;
+}
+
+.bottom .confirm-button::after {
+    border: 0;
+}
+
 .bottom .input-placeholder {
     line-height: 60rpx;
     color: #808080;

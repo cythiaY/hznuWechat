@@ -53,7 +53,7 @@
 .act-num {
     font-size: 30rpx;
     color: #737373;
-    margin: 20rpx 0;
+    /* margin: 20rpx 0; */
 }
 
 .act-status {

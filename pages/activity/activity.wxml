@@ -12,6 +12,7 @@
                 人
             </view>
             <view wx:if="{{item.activityStatus === 'UNSTART'}}" class="act-status unStart">未开始</view>
+            <view wx:elif="{{item.activityStatus === 'ENDED'}}" class="act-status unStart">已结束</view>
             <view wx:else class="act-status">进行中</view>
         </view>
     </view>
